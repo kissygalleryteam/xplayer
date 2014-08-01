@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Xplayer的demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.1/seed.js" charset="utf-8"></script>
+    <style type="text/css"> body{padding: 10px;} .run{border: 1px solid #999; display: block; font-family: 'Helvetica Neue', Helvetica, Arial; font-size: 12px; height: 16px; line-height: 16px; position: absolute; right: 15px; cursor: pointer; padding: 2px } pre{border-bottom-color: #000; border-bottom-style: none; border-bottom-width: 0px; border-image-outset: 0px; border-image-repeat: stretch; border-image-slice: 100%; border-image-source: none; border-image-width: 1; border-left-color: #BBB; border-left-style: solid; border-left-width: 4px; border-right-color: #BBB; border-right-style: solid; border-right-width: 4px; border-top-color: #000; border-top-style: none; border-top-width: 0px; display: block; font-family: Monaco, Consolas, 'Lucida Console', monospace; font-size: 12px; font-style: normal; line-height: 18px; margin-bottom: 25px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-bottom: 2px; padding-left: 15px; padding-right: 0px; padding-top: 2px; white-space: pre;} .container{width: 600px; position: relative; }
+	#progress{
+		position: relative;
+		height: 5px;
+		width: 100%;
+		border: 1px solid #e0e0e0;
+		cursor: pointer;
+		background: #000;
+		margin: 30px auto;
+	}
+	#load_progress{
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		background-color: #D2E4A4;
+	}
+	#current_progress{
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		background: #f60;
+	}
+    </style>
+</head>
+
+<body>
+    <h2>Xplayer的demo</h2>
+
+    <input id="play" value="播放" type="button" />
+    <input id="pause" value="暂停" type="button" />
+    <input id="stop" value="停止" type="button" />
+    <input id="getTrack" value="当前歌曲" type="button" />
+    <br />
+    <input type="text" id="jump_val" value="20000" />
+    <input id="jump" type="button" value="从?毫秒处播放" />
+    <input type="range" id="volume" value="50" min="0" max="100" step="1" />
+    <br />
+	<div id="progress">
+		<div id="load_progress"></div>
+		<div id="current_progress"></div>
+	</div>
+<div class="container">
+    <h3>示例</h3>
+    <div class="run" title="Run">运行示例</div>
+    <pre class="runnable">
+XiamiPlay.load({
+    'url' : 'http://noyobo.sinaapp.com/mp3/1.mp3',
+    'title' : '等你的季节',
+    'artist' : '刘诗诗'
+})
+    </pre>
+    <h3>示例2</h3>
+    <div class="run" title="Run">运行示例</div>
+    <pre class="runnable">
+XiamiPlay.load({
+    'url' : 'shuipashui64.mp3',
+    'title' : '给我一首歌的时间',
+    'artist' : '周杰伦'
+})
+    </pre>
+</div>
+<script>
+    var S = KISSY;
+    var debug = location.href.indexOf('gallery') === -1 ? true : false;
+    S.config({
+        debug: debug
+    });
+
+    if (S.Config.debug) {
+        var srcPath = "../../";
+        S.config({
+            packages: [{
+                name: "gallery/xplayer",
+                path: srcPath,
+                charset: "utf-8",
+                ignorePackageNameInUri: true
+            }]
+        });
+    }
+    S.use('gallery/xplayer/1.1/index', function(S, Xplayer) {
+        var $ = S.Node.all;
+        var XiamiPlay = window.XiamiPlay = new Xplayer({
+            "autoplay": true,
+            'forceFlash' : true
+        });
+
+        $("#play").on("click", function() {
+            XiamiPlay.play();
+        });
+        $("#stop").on("click", function() {
+            XiamiPlay.stop();
+        });
+        $("#pause").on("click", function() {
+            XiamiPlay.pause();
+        });
+        $("#getTrack").on("click", function() {
+            console.log(XiamiPlay.getTrack());
+        });
+        $("#jump").on("click", function() {
+            var val = $("#jump_val").val();
+            XiamiPlay.setPosition(val);
+        });
+        $('#volume').on('change', function(v){
+            var v = Number($('#volume').val()) / 100;
+            XiamiPlay.setVolume( v );
+        })
+
+        // 播放器 播放事件
+        XiamiPlay.on("timeupdate", function(e) {
+			$("#current_progress").css( 'width' , e.currentTime/e.duration * 100 + '%' )
+        });
+        XiamiPlay.on("ended", function(e) {
+            console.log('播放结束了,需要做什么操作呢?');
+        });
+        XiamiPlay.on('progress', function(e){
+            console.log(e);
+            $("#load_progress").css( 'width' , e.progress/e.duration * 100 + '%' )
+        });
+
+        $('.run').on('click', function(event){
+            var code = $(this).next().html()
+            eval(code)
+        });
+    });
+</script>
+<script type="text/javascript" src=""></script>
+</body>
+
+</html>
