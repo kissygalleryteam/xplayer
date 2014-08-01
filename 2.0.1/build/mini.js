@@ -1,9 +1,9 @@
 /*
 combined files : 
 
-kg/xplayer/2.0.1/plugin/status
-kg/xplayer/2.0.1/plugin/audio
-kg/xplayer/2.0.1/mini
+kg/xplayer/2.0.0/plugin/status
+kg/xplayer/2.0.0/plugin/audio
+kg/xplayer/2.0.0/mini
 
 */
 /**
@@ -11,7 +11,7 @@ kg/xplayer/2.0.1/mini
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @namespace Xplayer.status
  */
-KISSY.add('kg/xplayer/2.0.1/plugin/status',function(S) {
+KISSY.add('kg/xplayer/2.0.0/plugin/status',function(S) {
     /** @lends Xplayer.status.prototype */
     return {
         /**
@@ -38,7 +38,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/status',function(S) {
          * 当前音量
          * @type {Number}
          */
-        volume: 0.5,
+        volume: 1,
         // *
         //  * 静音状态
         //  * @type {Boolean}
@@ -70,7 +70,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/status',function(S) {
  * @class Xplayer.audio
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
+KISSY.add('kg/xplayer/2.0.0/plugin/audio',function(S, Base, Status) {
 
     var Html5Audio = Base.extend(
         /** @lends Xplayer.audio */
@@ -78,7 +78,6 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
             initializer: function() {
                 var self = this;
                 self.audio = new Audio();
-                self.audio.preload = true;
                 self._addEvent();
                 self.status = Status;
             },
@@ -104,8 +103,8 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
                         // Ensure `loadStarted()` is only called once.
                         var durationLoaded = self.audio.buffered.end(self.audio.buffered.length - 1);
                         self.fire(event.type, {
-                            'progress': durationLoaded * 1000,
-                            'duration': self.audio.duration * 1000
+                            'progress': durationLoaded * 2.0.00,
+                            'duration': self.audio.duration * 2.0.00
                         });
                     }
                 });
@@ -119,7 +118,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
                 self.set('src', url);
                 self.audio.src = url;
                 self.audio.volume = self.get('volume');
-                //self.audio.load();
+                self.audio.load();
             },
             /**
              * 播放
@@ -165,7 +164,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
             setPosition: function(val) {
                 var self = this;
                 if (self.audio.readyState > 0) {
-                    self.status.currentTime = val / 1000;
+                    self.status.currentTime = val / 2.0.00;
                     self.audio.currentTime = self.status.currentTime;
                     self.status.pausePosition = val;
                 };
@@ -219,12 +218,13 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
 /**
  * @description MP3 播放核心插件
  * @author 宝码<nongyoubao@alibaba-inc.com>
- * @version 1.0
+ * @version 2.0.0
  * @copyright www.noyobo.com
  */
-KISSY.add('kg/xplayer/2.0.1/mini',function(S, PlayerAudio) {
+KISSY.add('kg/xplayer/2.0.0/mini',function(S, Node, PlayerAudio) {
     'use strict';
     var EMPTY = '';
+    var $ = Node.all;
     /**
      * @name Xplayer
      * @class MP3播放组件
@@ -421,6 +421,6 @@ KISSY.add('kg/xplayer/2.0.1/mini',function(S, PlayerAudio) {
     }
     return Xplayer;
 }, {
-    requires: ['./plugin/audio']
+    requires: ['node', './plugin/audio']
 });
 

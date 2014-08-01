@@ -4,9 +4,10 @@
  * @version 1.0
  * @copyright www.noyobo.com
  */
-KISSY.add(function(S, PlayerAudio) {
+KISSY.add(function(S, Node, PlayerAudio) {
     'use strict';
     var EMPTY = '';
+    var $ = Node.all;
     /**
      * @name Xplayer
      * @class MP3播放组件
@@ -203,5 +204,5 @@ KISSY.add(function(S, PlayerAudio) {
     }
     return Xplayer;
 }, {
-    requires: ['./plugin/audio']
+    requires: ['node', './plugin/audio']
 });

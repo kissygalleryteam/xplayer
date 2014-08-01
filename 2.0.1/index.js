@@ -4,17 +4,16 @@
  * @version 1.0
  * @copyright www.noyobo.com
  */
-KISSY.add(function(S, PlayerAudio, PlayerSwf) {
+KISSY.add(function(S, Node, PlayerAudio, PlayerSwf) {
     'use strict';
     var EMPTY = '';
+    var $ = Node.all;
     /**
      * @name Xplayer
      * @class MP3播放组件
      * @constructor
      * @param {Object} [config] 播放器参数
      * @param {Boolean} [config.autoplay=false] 是否自动播放
-     * @param {Boolean} [config.forceFlash=false] 强制使用Flash
-     * @param {Boolean} [config.forceAudio=false] 强制使用Audio
      * @requires KISSY>1.4.0
      * @see http://docs.kissyui.com/
      * @example
@@ -229,5 +228,5 @@ KISSY.add(function(S, PlayerAudio, PlayerSwf) {
     }
     return Xplayer;
 }, {
-    requires: ['./plugin/audio', './plugin/audioSwf']
+    requires: ['node', './plugin/audio', './plugin/audioSwf']
 });

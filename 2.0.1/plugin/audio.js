@@ -12,7 +12,6 @@ KISSY.add(function(S, Base, Status) {
             initializer: function() {
                 var self = this;
                 self.audio = new Audio();
-                self.audio.preload = true;
                 self._addEvent();
                 self.status = Status;
             },
@@ -38,8 +37,8 @@ KISSY.add(function(S, Base, Status) {
                         // Ensure `loadStarted()` is only called once.
                         var durationLoaded = self.audio.buffered.end(self.audio.buffered.length - 1);
                         self.fire(event.type, {
-                            'progress': durationLoaded * 1000,
-                            'duration': self.audio.duration * 1000
+                            'progress': durationLoaded * 2.0.00,
+                            'duration': self.audio.duration * 2.0.00
                         });
                     }
                 });
@@ -53,7 +52,7 @@ KISSY.add(function(S, Base, Status) {
                 self.set('src', url);
                 self.audio.src = url;
                 self.audio.volume = self.get('volume');
-                //self.audio.load();
+                self.audio.load();
             },
             /**
              * 播放
@@ -99,7 +98,7 @@ KISSY.add(function(S, Base, Status) {
             setPosition: function(val) {
                 var self = this;
                 if (self.audio.readyState > 0) {
-                    self.status.currentTime = val / 1000;
+                    self.status.currentTime = val / 2.0.00;
                     self.audio.currentTime = self.status.currentTime;
                     self.status.pausePosition = val;
                 };

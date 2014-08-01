@@ -27,7 +27,7 @@
         border-bottom-width: 0px;
         border-image-outset: 0px;
         border-image-repeat: stretch;
-        border-image-slice: 100%;
+        border-image-slice: 2.0.0%;
         border-image-source: none;
         border-image-width: 1;
         border-left-color: #BBB;
@@ -61,7 +61,7 @@
     #progress {
         position: relative;
         height: 5px;
-        width: 100%;
+        width: 2.0.0%;
         border: 1px solid #e0e0e0;
         cursor: pointer;
         background: #000;
@@ -71,14 +71,14 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: 100%;
+        height: 2.0.0%;
         background-color: #D2E4A4;
     }
     #current_progress {
         position: absolute;
         top: 0;
         left: 0;
-        height: 100%;
+        height: 2.0.0%;
         background: #f60;
     }
     </style>
@@ -96,7 +96,7 @@
     <br />
     <input type="text" id="jump_val" value="20000" />
     <input id="jump" type="button" value="从?毫秒处播放" />
-    <input type="range" id="volume" value="50" min="0" max="100" step="1" />
+    <input type="range" id="volume" value="50" min="0" max="2.0.0" step="1" />
     <br />
     <div id="progress">
         <div id="load_progress"></div>
@@ -116,7 +116,7 @@ XiamiPlay.load({
         <div class="run" title="Run">运行示例</div>
         <pre class="runnable">
 XiamiPlay.load({
-    'url' : '2080907_3665684_l.mp3',
+    'url' : 'http://noyobo.sinaapp.com/mp3/2.mp3',
     'title' : '给我一首歌的时间',
     'artist' : '周杰伦'
 })
@@ -131,7 +131,7 @@ XiamiPlay.load({
             S.config({
                 debug: debug,
                 packages: [{
-                    name: "gallery/xplayer",
+                    name: "kg/xplayer",
                     path: srcPath,
                     charset: "utf-8",
                     ignorePackageNameInUri: true
@@ -139,7 +139,7 @@ XiamiPlay.load({
             });
         }
 
-        S.use('gallery/xplayer/1.1/mini', function(S, Xplayer) {
+        S.use('kg/xplayer/2.0.0/mini', function(S, Xplayer) {
             var $ = S.Node.all;
             var XiamiPlay = window.XiamiPlay = new Xplayer({
                 "autoplay": true
@@ -162,19 +162,19 @@ XiamiPlay.load({
                 XiamiPlay.setPosition(val);
             });
             $('#volume').on('change', function(v) {
-                var v = Number($('#volume').val()) / 100;
+                var v = Number($('#volume').val()) / 2.0.0;
                 XiamiPlay.setVolume(v);
             })
 
             // 播放器 播放事件
             XiamiPlay.on("timeupdate", function(e) {
-                $("#current_progress").css('width', e.currentTime / e.duration * 100 + '%')
+                $("#current_progress").css('width', e.currentTime / e.duration * 2.0.0 + '%')
             });
             XiamiPlay.on("ended", function(e) {
                 S.log('播放结束了,需要做什么操作呢?');
             });
             XiamiPlay.on('progress', function(e) {
-                $("#load_progress").css('width', e.progress / e.duration * 100 + '%')
+                $("#load_progress").css('width', e.progress / e.duration * 2.0.0 + '%')
             });
 
             $('.run').on('click', function(event) {
@@ -185,7 +185,7 @@ XiamiPlay.load({
     })(KISSY);
     </script>
     <script type="text/javascript">
-    KISSY.use('gallery/qrcode/1.0/', function(S, QRCode) {
+    KISSY.use('kg/qrcode/2.0.0/', function(S, QRCode) {
         var qrcode = new QRCode("QRCode", {
             width: 128,
             height: 128,

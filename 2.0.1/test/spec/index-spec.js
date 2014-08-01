@@ -7,4 +7,4 @@ KISSY.add(function (S, Node,Demo) {
         })
     });
 
-},{requires:['node','gallery/xplayer/1.1/']});
+},{requires:['node','gallery/xplayer/1.0/']});

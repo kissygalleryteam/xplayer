@@ -30,7 +30,7 @@ KISSY.add(function(S) {
          * 当前音量
          * @type {Number}
          */
-        volume: 0.5,
+        volume: 1,
         // *
         //  * 静音状态
         //  * @type {Boolean}
