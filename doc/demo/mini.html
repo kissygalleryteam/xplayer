@@ -124,23 +124,34 @@ XiamiPlay.load({
     </div>
     <script>
     (function(S) {
-        var debug = ~location.search.indexOf('ks-debug');
-
+        var debug = !!~location.search.indexOf('ks-debug');
+        S.config({
+            packages:[
+                {
+                    name:"kg",
+                    path:"http://g.tbcdn.cn/kg/",
+                    charset:"utf-8",
+                    ignorePackageNameInUri:true
+                }
+            ]
+        });
         if (debug) {
-            var srcPath = "../../";
+            var srcPath = "../";
             S.config({
-                debug: debug,
-                packages: [{
-                    name: "gallery/xplayer",
-                    path: srcPath,
-                    charset: "utf-8",
-                    ignorePackageNameInUri: true
-                }]
+                debug: debug
+                packages:[
+                    {
+                        name:"kg/xplayer/2.0.1",
+                        path:srcPath,
+                        charset:"utf-8",
+                        ignorePackageNameInUri:true
+                    }
+                ]
             });
         }
 
-        S.use('gallery/xplayer/1.1/mini', function(S, Xplayer) {
-            var $ = S.Node.all;
+        S.use('kg/xplayer/2.0.1/mini, node', function(S, Xplayer, Node) {
+            var $ = Node.all;
             var XiamiPlay = window.XiamiPlay = new Xplayer({
                 "autoplay": true
             });

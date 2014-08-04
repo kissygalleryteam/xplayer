@@ -69,24 +69,33 @@ XiamiPlay.load({
 </div>
 <script>
     var S = KISSY;
-    var debug = location.href.indexOf('gallery') === -1 ? true : false;
+    var debug = !!~location.search.indexOf('ks-debug');
     S.config({
-        debug: debug
+        packages:[
+            {
+                name:"kg",
+                path:"http://g.tbcdn.cn/kg/",
+                charset:"utf-8",
+                ignorePackageNameInUri:true
+            }
+        ]
     });
-
-    if (S.Config.debug) {
-        var srcPath = "../../";
+    if (debug) {
+        var srcPath = "../";
         S.config({
-            packages: [{
-                name: "gallery/xplayer",
-                path: srcPath,
-                charset: "utf-8",
-                ignorePackageNameInUri: true
-            }]
+            debug: debug,
+            packages:[
+                {
+                    name:"kg/xplayer/2.0.1",
+                    path:srcPath,
+                    charset:"utf-8",
+                    ignorePackageNameInUri:true
+                }
+            ]
         });
     }
-    S.use('gallery/xplayer/2.0.1/index', function(S, Xplayer) {
-        var $ = S.Node.all;
+    S.use('kg/xplayer/2.0.1/index, node', function(S, Xplayer, Node) {
+        var $ = Node.all;
         var XiamiPlay = window.XiamiPlay = new Xplayer({
             "autoplay": true
         });
@@ -130,7 +139,6 @@ XiamiPlay.load({
         });
     });
 </script>
-<script type="text/javascript" src=""></script>
 </body>
 
 </html>
