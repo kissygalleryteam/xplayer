@@ -1,3 +1,3 @@
 config({
-    'kg/xplayer/index': {alias: ['kg/xplayer/2.0.0/index']}
+    'gallery/xplayer/index': {alias: ['gallery/xplayer/1.1/index']}
 });

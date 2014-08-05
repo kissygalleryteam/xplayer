@@ -1,10 +1,10 @@
 /*
 combined files : 
 
-kg/xplayer/2.0.0/plugin/status
-kg/xplayer/2.0.0/plugin/audio
-kg/xplayer/2.0.0/plugin/audioSwf
-kg/xplayer/2.0.0/index
+kg/xplayer/2.0.1/plugin/status
+kg/xplayer/2.0.1/plugin/audio
+kg/xplayer/2.0.1/plugin/audioSwf
+kg/xplayer/2.0.1/index
 
 */
 /**
@@ -12,7 +12,7 @@ kg/xplayer/2.0.0/index
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @namespace Xplayer.status
  */
-KISSY.add('kg/xplayer/2.0.0/plugin/status',function(S) {
+KISSY.add('kg/xplayer/2.0.1/plugin/status',function(S) {
     /** @lends Xplayer.status.prototype */
     return {
         /**
@@ -39,7 +39,7 @@ KISSY.add('kg/xplayer/2.0.0/plugin/status',function(S) {
          * 当前音量
          * @type {Number}
          */
-        volume: 1,
+        volume: 0.5,
         // *
         //  * 静音状态
         //  * @type {Boolean}
@@ -71,7 +71,7 @@ KISSY.add('kg/xplayer/2.0.0/plugin/status',function(S) {
  * @class Xplayer.audio
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.0/plugin/audio',function(S, Base, Status) {
+KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
 
     var Html5Audio = Base.extend(
         /** @lends Xplayer.audio */
@@ -79,6 +79,7 @@ KISSY.add('kg/xplayer/2.0.0/plugin/audio',function(S, Base, Status) {
             initializer: function() {
                 var self = this;
                 self.audio = new Audio();
+                self.audio.preload = true;
                 self._addEvent();
                 self.status = Status;
             },
@@ -104,8 +105,8 @@ KISSY.add('kg/xplayer/2.0.0/plugin/audio',function(S, Base, Status) {
                         // Ensure `loadStarted()` is only called once.
                         var durationLoaded = self.audio.buffered.end(self.audio.buffered.length - 1);
                         self.fire(event.type, {
-                            'progress': durationLoaded * 2.0.00,
-                            'duration': self.audio.duration * 2.0.00
+                            'progress': durationLoaded * 1000,
+                            'duration': self.audio.duration * 1000
                         });
                     }
                 });
@@ -119,7 +120,7 @@ KISSY.add('kg/xplayer/2.0.0/plugin/audio',function(S, Base, Status) {
                 self.set('src', url);
                 self.audio.src = url;
                 self.audio.volume = self.get('volume');
-                self.audio.load();
+                //self.audio.load();
             },
             /**
              * 播放
@@ -165,7 +166,7 @@ KISSY.add('kg/xplayer/2.0.0/plugin/audio',function(S, Base, Status) {
             setPosition: function(val) {
                 var self = this;
                 if (self.audio.readyState > 0) {
-                    self.status.currentTime = val / 2.0.00;
+                    self.status.currentTime = val / 1000;
                     self.audio.currentTime = self.status.currentTime;
                     self.status.pausePosition = val;
                 };
@@ -222,7 +223,7 @@ KISSY.add('kg/xplayer/2.0.0/plugin/audio',function(S, Base, Status) {
  * @class Xplayer.FlashPlayer
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.0/plugin/audioSwf',function(S, Base, Swf, Status) {
+KISSY.add('kg/xplayer/2.0.1/plugin/audioSwf',function(S, Base, Swf, Status) {
 
     function randomString(length) {
         var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
@@ -238,7 +239,7 @@ KISSY.add('kg/xplayer/2.0.0/plugin/audioSwf',function(S, Base, Swf, Status) {
     var win = window;
     var swfurl = "../flash/xplayer.swf?v=" + S.now();
     if (window.location.href.indexOf('github.xiami.com') === -1) {
-        swfurl = 'http://a.tbcdn.cn/s/kissy/kg/xplayer/2.0.0/xplayer.swf';
+        swfurl = 'http://g.tbcdn.cn/de/music-swf/xplayer.swf';
     };
     var FlashPlayer = Base.extend({
         initializer: function() {
@@ -250,8 +251,8 @@ KISSY.add('kg/xplayer/2.0.0/plugin/audioSwf',function(S, Base, Swf, Status) {
             wrap.style.position = 'absolute';
             wrap.style.width = '1px';
             wrap.style.height = '1px';
-            wrap.style.left = '-2.0.00px';
-            wrap.style.top = '-2.0.00px';
+            wrap.style.left = '-1000px';
+            wrap.style.top = '-1000px';
             document.body.appendChild(wrap);
             var swfConfig = {
                 src: swfurl,
@@ -380,19 +381,20 @@ KISSY.add('kg/xplayer/2.0.0/plugin/audioSwf',function(S, Base, Swf, Status) {
 /**
  * @description MP3 播放核心插件
  * @author 宝码<nongyoubao@alibaba-inc.com>
- * @version 2.0.0
+ * @version 1.0
  * @copyright www.noyobo.com
  */
-KISSY.add('kg/xplayer/2.0.0/index',function(S, Node, PlayerAudio, PlayerSwf) {
+KISSY.add('kg/xplayer/2.0.1/index',function(S, PlayerAudio, PlayerSwf) {
     'use strict';
     var EMPTY = '';
-    var $ = Node.all;
     /**
      * @name Xplayer
      * @class MP3播放组件
      * @constructor
      * @param {Object} [config] 播放器参数
      * @param {Boolean} [config.autoplay=false] 是否自动播放
+     * @param {Boolean} [config.forceFlash=false] 强制使用Flash
+     * @param {Boolean} [config.forceAudio=false] 强制使用Audio
      * @requires KISSY>1.4.0
      * @see http://docs.kissyui.com/
      * @example
@@ -607,6 +609,6 @@ KISSY.add('kg/xplayer/2.0.0/index',function(S, Node, PlayerAudio, PlayerSwf) {
     }
     return Xplayer;
 }, {
-    requires: ['node', './plugin/audio', './plugin/audioSwf']
+    requires: ['./plugin/audio', './plugin/audioSwf']
 });
 
