@@ -20,7 +20,7 @@ KISSY.add(function(S, Base, Swf, Status) {
     var win = window;
     var swfurl = "../flash/xplayer.swf?v=" + S.now();
     if (window.location.href.indexOf('github.xiami.com') === -1) {
-        swfurl = 'http://a.tbcdn.cn/s/kissy/kg/xplayer/2.0.0/xplayer.swf';
+        swfurl = 'http://g.tbcdn.cn/de/music-swf/xplayer.swf';
     };
     var FlashPlayer = Base.extend({
         initializer: function() {
@@ -32,8 +32,8 @@ KISSY.add(function(S, Base, Swf, Status) {
             wrap.style.position = 'absolute';
             wrap.style.width = '1px';
             wrap.style.height = '1px';
-            wrap.style.left = '-2.0.00px';
-            wrap.style.top = '-2.0.00px';
+            wrap.style.left = '-1000px';
+            wrap.style.top = '-1000px';
             document.body.appendChild(wrap);
             var swfConfig = {
                 src: swfurl,

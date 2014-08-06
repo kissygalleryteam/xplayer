@@ -1,3 +1,3 @@
 config({
-    'kg/xplayer/index': {requires: ['node','base']}
+    'gallery/xplayer/index': {requires: ['node','base']}
 });

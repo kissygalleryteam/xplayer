@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-	var task = grunt.task;
+    var task = grunt.task;
     var SRC = './';
     grunt.initConfig({
         // 配置文件，参考package.json配置方式，必须设置项是
@@ -14,31 +14,32 @@ module.exports = function(grunt) {
         clean: {
             build: {
                 src: './build/*'
-			}
+            },
+            doc: {
+                src: './doc/*'
+            }
         },
         // kmc打包任务，默认情况，入口文件是index.js，可以自行添加入口文件，在files下面
         // 添加
         kmc: {
             options: {
-                packages: [
-                    {
-                        name: '<%= pkg.name %>',
-                        path: '../'
-                    }
-                ],
+                packages: [{
+                    name: '<%= pkg.name %>',
+                    path: '../'
+                }],
                 depFilePath: 'mods.js',
-                fixModuleName:true,
-                map: [["<%= pkg.name %>/", "kg/<%= pkg.name %>/<%= pkg.version %>/"]]
+                fixModuleName: true,
+                map: [
+                    ["<%= pkg.name %>/", "kg/<%= pkg.name %>/<%= pkg.version %>/"]
+                ]
             },
             main: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: SRC,
-                        src: [ './*.js','!./Gruntfile.js' ],
-                        dest: 'build/'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: SRC,
+                    src: ['./*.js', '!./Gruntfile.js'],
+                    dest: 'build/'
+                }]
             }
         },
         /**
@@ -47,10 +48,12 @@ module.exports = function(grunt) {
          */
         uglify: {
             options: {
-                compress:{
-                    global_defs:{"DEBUG":false},
-                    drop_console:true,
-                    dead_code:true
+                compress: {
+                    global_defs: {
+                        "DEBUG": false
+                    },
+                    drop_console: true,
+                    dead_code: true
                 },
                 banner: '<%= banner %>',
                 beautify: {
@@ -58,15 +61,13 @@ module.exports = function(grunt) {
                 }
             },
             page: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: './build',
-                        src: ['**/*.js', '!**/*-min.js'],
-                        dest: './build',
-                        ext: '-min.js'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: './build',
+                    src: ['**/*.js', '!**/*-min.js'],
+                    dest: './build',
+                    ext: '-min.js'
+                }]
             }
         },
         less: {
@@ -74,103 +75,116 @@ module.exports = function(grunt) {
                 paths: './'
             },
             main: {
-                files: [
-                    {
-                        expand: true,
-						cwd:SRC,
-                        src: ['**/*.less',
-                            '!node_modules/**/*.less',
-							'!build/**/*.less',   
-							'!demo/**/*.less'],
-                        dest: './build/',
-                        ext: '.css'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: SRC,
+                    src: ['**/*.less',
+                        '!node_modules/**/*.less',
+                        '!templates/**/*.less',
+                        '!build/**/*.less',
+                        '!demo/**/*.less'
+                    ],
+                    dest: './build/',
+                    ext: '.css'
+                }]
             }
         },
-		// 拷贝 CSS 文件
-		copy : {
-			main: {
-				files:[
-					{
-						expand:true,
-						cwd:SRC,
-						src: [
-							'**/*.css',
-                            '!node_modules/**/*.css',
-							'!build/**/*.css',
-							'!demo/**/*.css'
-						], 
-						dest: './build/', 
-						filter: 'isFile'
-					}
-				]
-			}
-		},
-		// 监听JS、CSS、LESS文件的修改
+        // 拷贝 CSS 文件
+        copy: {
+            main: {
+                files: [{
+                    expand: true,
+                    cwd: SRC,
+                    src: [
+                        '**/*.css',
+                        '!node_modules/**/*.css',
+                        '!build/**/*.css',
+                        '!demo/**/*.css',
+                        '!templates/**/*.css',
+                        '!doc/**/*.css'
+                    ],
+                    dest: './build/',
+                    filter: 'isFile'
+                }, {
+                    expand: true,
+                    cwd: 'flash',
+                    flatten: true,
+                    src: '**/*.swf',
+                    dest: './build/',
+                    filter: 'isFile'
+                }]
+            }
+        },
+        // 监听JS、CSS、LESS文件的修改
         watch: {
             'all': {
                 files: [
-					'./src/**/*.css',
-					'!./build/**/*'
-				],
-                tasks: [ 'build' ]
+                    './src/**/*.css',
+                    '!./build/**/*'
+                ],
+                tasks: ['build']
             }
-		},
+        },
         cssmin: {
             scss: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: './build',
-                        src: ['**/*.scss.css', '!**/*.scss-min.css'],
-                        dest: './build',
-                        ext: '.scss-min.css'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: './build',
+                    src: ['**/*.scss.css', '!**/*.scss-min.css'],
+                    dest: './build',
+                    ext: '.scss-min.css'
+                }]
             },
             less: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: './build',
-                        src: ['**/*.less.css', '!**/*.less-min.css'],
-                        dest: './build',
-                        ext: '.less-min.css'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: './build',
+                    src: ['**/*.less.css', '!**/*.less-min.css'],
+                    dest: './build',
+                    ext: '.less-min.css'
+                }]
             },
             main: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: './build',
-                        src: ['**/*.css', '!**/*-min.css','!**/*.less.css','!**/*.scss.css'],
-                        dest: './build',
-                        ext: '-min.css'
-                    }
-                ]
+                files: [{
+                    expand: true,
+                    cwd: './build',
+                    src: ['**/*.css', '!**/*-min.css', '!**/*.less.css', '!**/*.scss.css', '!doc/**/*.css', '!templates/**/*.css'],
+                    dest: './build',
+                    ext: '-min.css'
+                }]
+            }
+        },
+        jsdoc: {
+            dist: {
+                src: [
+                    'index.js',
+                    'plugin/status.js',
+                    'README.md'
+                ],
+                options: {
+                    'private': false,
+                    'destination': './doc',
+                    'configure': 'templates/jaguar/conf.json',
+                    'template': 'templates/jaguar'
+                }
             }
         }
     });
 
     // 使用到的任务，可以增加其他任务
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-kmc');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-less');
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
 
-	grunt.registerTask('build', '默认构建任务', function() {
-		task.run(['clean:build', 'kmc','uglify', 'copy','less','cssmin']);
-	});
+    grunt.registerTask('build', '默认构建任务', function() {
+        task.run(['clean:build', 'kmc', 'uglify', 'copy', 'less', 'cssmin']);
+    });
 
-    return grunt.registerTask('default', '',function(type){
-		if (!type) {
-			task.run(['build']);
-		}
-	});
+    grunt.registerTask('doc', 'js', function() {
+        task.run(['clean:doc', 'jsdoc']);
+    });
+    return grunt.registerTask('default', '', function(type) {
+        if (!type) {
+            task.run(['build']);
+        }
+    });
 };
