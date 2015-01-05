@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>xplayer</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com-prettify.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.css">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdn.staticfile.org/prettify/r298/prettify.min.js"></script>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.8/seed-min.js" data-config="{combine:true}"></script>
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div id="header"><a href="http://docs.kissyui.com/" class="logo">kissy</a>
+      <nav><a href="http://docs.kissyui.com/1.4/docs/html/coms.html">优秀组件推荐</a></nav>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul data-spy="affix" data-offset-top="0" class="nav nav-list bs-docs-sidenav"></ul>
+        </div>
+        <div class="span9 bs-docs-content">
+          <h1 data-id="undefined" class="title">xplayer</h1>
+          <p class="author-wrapper"><span>组件有问题？旺旺联系作者：</span><a href="https://github.com/noyobo" target="_blank" data-name="宝码" class="author"><img src="https://avatars.githubusercontent.com/u/1292082?v=2&amp;s=60" alt="宝码"></a><span class="author-name">宝码</span>
+          </p>
+          <div class="common-link"><a href="../demo/index.html" target="_blank" class="demo">示例</a><a href="https://github.com/kissygalleryteam/xplayer" target="_blank" class="source">源码</a></div>
+          <p class="com-info"><span class="info-label">View</span><span data-com="xplayer" class="J_View">1089</span></p>
+          <p class="com-info"><span class="info-label">所属分类</span><a href="http://kpm.taobao.net/list/音视频">音视频</a><span class="info-label tag-label">组件标签</span><a href="http://kpm.taobao.net/list/tag?tag=音频播放">音频播放</a>
+          </p>
+          <p class="com-info"><span class="info-label">kissy版本</span><span>1.4.X</span>
+          </p><h2 id="-">综述</h2>
+<p>Xplayer是一款音乐播放器, 支持 audio flash 播放.</p>
+<ul>
+<li>版本：2.0.1</li>
+<li>作者：宝码</li>
+<li>demo：<a href="/xplayer/doc/demo/index.html">/xplayer/doc/demo/index.html</a></li>
+<li>mini demo<a href="/xplayer/doc/demo/mini.html">/xplayer/doc/demo/mini.html</a></li>
+</ul>
+<h2 id="-">初始化组件</h2>
+<pre><code>S.use(&#39;kg/xplayer/2.0.1/index&#39;, function (S, Xplayer) {
+    var xplayer = new Xplayer({
+            &#39;autoplay&#39;: false, // 是否自动播放
+            &#39;forceFlash&#39;: false, // 强制使用Flash
+            &#39;forceAudio&#39;: false // 强制使用Audia
+        });
+
+    xplayer.load({
+        &#39;url&#39; : &#39;http://example.com/kissy.mp3&#39;
+    })
+
+    xplayer.play();
+})
+</code></pre><h2 id="api-">API说明</h2>
+<p><a href="/xplayer/doc/doc/index.html">/xplayer/doc/doc/index.html</a></p>
+<blockquote>
+<p>mini 的 API一致</p>
+</blockquote>
+
+          <div style="display:none;"><script type="text/javascript" src="http://tajs.qq.com/stats?sId=36378479" charset="UTF-8"></script></div>
+          <script src="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
