@@ -1,21 +1,22 @@
 module.exports = function(grunt) {
     var task = grunt.task;
+    var SRC = './';
     grunt.initConfig({
         // 配置文件，参考package.json配置方式，必须设置项是
         // name, version, author
         // name作为gallery发布后的模块名
         // version是版本，也是发布目录
         // author必须是{name: "xxx", email: "xxx"}格式
-        pkg: grunt.file.readJSON('abc.json'),
+        pkg: grunt.file.readJSON('package.json'),
         banner: '/*!build time : <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>*/\n',
 
         // 对build目录进行清理
         clean: {
             build: {
-                src: '<%= pkg.version %>/build/*'
+                src: './build/*'
             },
             doc: {
-                src: '<%= pkg.version %>/doc/*'
+                src: './doc/*'
             }
         },
         // kmc打包任务，默认情况，入口文件是index.js，可以自行添加入口文件，在files下面
@@ -26,17 +27,18 @@ module.exports = function(grunt) {
                     name: '<%= pkg.name %>',
                     path: '../'
                 }],
+                depFilePath: 'mods.js',
+                fixModuleName: true,
                 map: [
-                    ["<%= pkg.name %>/", "gallery/<%= pkg.name %>/"]
+                    ["<%= pkg.name %>/", "kg/<%= pkg.name %>/<%= pkg.version %>/"]
                 ]
             },
             main: {
                 files: [{
-                    src: "<%= pkg.version %>/index.js",
-                    dest: "<%= pkg.version %>/build/index.js"
-                }, {
-                    src: "<%= pkg.version %>/mini.js",
-                    dest: "<%= pkg.version %>/build/mini.js"
+                    expand: true,
+                    cwd: SRC,
+                    src: ['./*.js', '!./Gruntfile.js'],
+                    dest: 'build/'
                 }]
             }
         },
@@ -46,6 +48,13 @@ module.exports = function(grunt) {
          */
         uglify: {
             options: {
+                compress: {
+                    global_defs: {
+                        "DEBUG": false
+                    },
+                    drop_console: true,
+                    dead_code: true
+                },
                 banner: '<%= banner %>',
                 beautify: {
                     ascii_only: true
@@ -54,46 +63,11 @@ module.exports = function(grunt) {
             page: {
                 files: [{
                     expand: true,
-                    cwd: '<%= pkg.version %>/build',
+                    cwd: './build',
                     src: ['**/*.js', '!**/*-min.js'],
-                    dest: '<%= pkg.version %>/build',
+                    dest: './build',
                     ext: '-min.js'
                 }]
-            }
-        },
-        // FlexCombo服务配置
-        // https://npmjs.org/package/grunt-flexcombo
-        flexcombo: {
-            // https://speakerdeck.com/lijing00333/grunt-flexcombo
-            debug: {
-                options: {
-                    proxyport: 8080,
-                    target: '<%= pkg.version %>/build/',
-                    urls: '/s/kissy/gallery/<%= pkg.name %>/<%= pkg.version %>',
-                    port: '80',
-                    servlet: '?',
-                    separator: ',',
-                    charset: 'gbk', // 输出文件的编码
-                    // 默认将"-min"文件映射到源文件
-                    filter: {
-                        '-min\\.js': '.js'
-                    }
-                }
-            },
-            demo: {
-                options: {
-                    proxyport: 8080,
-                    target: '<%= pkg.version %>/',
-                    urls: '/s/kissy/gallery/<%= pkg.name %>/<%= pkg.version %>',
-                    port: '80',
-                    proxyHosts: ['demo'],
-                    servlet: '?',
-                    separator: ',',
-                    charset: 'gbk',
-                    filter: {
-                        '-min\\.js': '.js'
-                    }
-                }
             }
         },
         less: {
@@ -103,27 +77,15 @@ module.exports = function(grunt) {
             main: {
                 files: [{
                     expand: true,
-                    cwd: '<%= pkg.version %>/',
+                    cwd: SRC,
                     src: ['**/*.less',
+                        '!node_modules/**/*.less',
+                        '!templates/**/*.less',
                         '!build/**/*.less',
                         '!demo/**/*.less'
                     ],
-                    dest: '<%= pkg.version %>/build/',
-                    ext: '.less.css'
-                }]
-            }
-        },
-        sass: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= pkg.version %>/',
-                    src: ['**/*.scss',
-                        '!build/**/*.scss',
-                        '!demo/**/*.scss'
-                    ],
-                    dest: '<%= pkg.version %>/build/',
-                    ext: '.scss.css'
+                    dest: './build/',
+                    ext: '.css'
                 }]
             }
         },
@@ -132,20 +94,23 @@ module.exports = function(grunt) {
             main: {
                 files: [{
                     expand: true,
-                    cwd: '<%= pkg.version %>/',
+                    cwd: SRC,
                     src: [
                         '**/*.css',
+                        '!node_modules/**/*.css',
                         '!build/**/*.css',
                         '!demo/**/*.css',
+                        '!templates/**/*.css',
                         '!doc/**/*.css'
                     ],
-                    dest: '<%= pkg.version %>/build/',
+                    dest: './build/',
                     filter: 'isFile'
                 }, {
                     expand: true,
-                    cwd: '<%= pkg.version %>/flash',
+                    cwd: 'flash',
+                    flatten: true,
                     src: '**/*.swf',
-                    dest: '<%= pkg.version %>/build/',
+                    dest: './build/',
                     filter: 'isFile'
                 }]
             }
@@ -154,20 +119,37 @@ module.exports = function(grunt) {
         watch: {
             'all': {
                 files: [
-                    '<%= pkg.version %>/**/*.js',
-                    '<%= pkg.version %>/src/**/*.css',
-                    '!<%= pkg.version %>/build/**/*'
+                    './src/**/*.css',
+                    '!./build/**/*'
                 ],
                 tasks: ['build']
             }
         },
         cssmin: {
+            scss: {
+                files: [{
+                    expand: true,
+                    cwd: './build',
+                    src: ['**/*.scss.css', '!**/*.scss-min.css'],
+                    dest: './build',
+                    ext: '.scss-min.css'
+                }]
+            },
+            less: {
+                files: [{
+                    expand: true,
+                    cwd: './build',
+                    src: ['**/*.less.css', '!**/*.less-min.css'],
+                    dest: './build',
+                    ext: '.less-min.css'
+                }]
+            },
             main: {
                 files: [{
                     expand: true,
-                    cwd: '<%= pkg.version %>/build',
-                    src: ['**/*.css', '!**/*-min.css'],
-                    dest: '<%= pkg.version %>/build',
+                    cwd: './build',
+                    src: ['**/*.css', '!**/*-min.css', '!**/*.less.css', '!**/*.scss.css', '!doc/**/*.css', '!templates/**/*.css'],
+                    dest: './build',
                     ext: '-min.css'
                 }]
             }
@@ -175,56 +157,31 @@ module.exports = function(grunt) {
         jsdoc: {
             dist: {
                 src: [
-                    '<%= pkg.version %>/index.js',
-                    // '<%= pkg.version %>/mini.js',
-                    '<%= pkg.version %>/plugin/status.js',
+                    'index.js',
+                    'plugin/status.js',
                     'README.md'
                 ],
                 options: {
                     'private': false,
-                    destination: './<%= pkg.version %>/doc',
-                    configure: 'templates/jaguar/conf.json',
-                    template: 'templates/jaguar'
+                    'destination': './doc',
+                    'configure': 'templates/jaguar/conf.json',
+                    'template': 'templates/jaguar'
                 }
             }
         }
     });
 
     // 使用到的任务，可以增加其他任务
-    grunt.loadNpmTasks('grunt-jsdoc');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-kmc');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-flexcombo');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-sass');
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-    grunt.registerTask('doc', '生成JSDOC文档', function() {
-        task.run(['clean:doc', 'jsdoc']);
-        //task.run(['jsdoc']);
-    });
-
-    grunt.registerTask('css', '构建CSS任务', function() {
-        task.run(['clean:build', 'less', 'sass', 'cssmin']);
-    });
 
     grunt.registerTask('build', '默认构建任务', function() {
-        task.run(['clean:build', 'kmc', 'uglify', 'copy']);
+        task.run(['clean:build', 'kmc', 'uglify', 'copy', 'less', 'cssmin']);
     });
 
-    // 启动Debug调试时的本地服务：grunt debug
-    grunt.registerTask('debug', '开启debug模式', function() {
-        task.run(['flexcombo:debug', 'watch:all']);
+    grunt.registerTask('doc', 'js', function() {
+        task.run(['clean:doc', 'jsdoc']);
     });
-
-    // 启动Demo调试时的本地服务: grunt demo
-    grunt.registerTask('demo', '开启demo模式', function() {
-        task.run(['flexcombo:demo', 'watch:all']);
-    });
-
     return grunt.registerTask('default', '', function(type) {
         if (!type) {
             task.run(['build']);
