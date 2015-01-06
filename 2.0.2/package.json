@@ -1,6 +1,10 @@
 {
   "name": "xplayer",
+<<<<<<< HEAD
+  "version": "2.1.0",
+=======
   "version": "2.0.2",
+>>>>>>> 38a62eb2f861f8ed0c4ab5098ec99a3f8164f50a
   "private": true,
   "devDependencies": {
     "grunt": "~0.4.1",
