@@ -141,7 +141,7 @@ XiamiPlay.load({
                 debug: debug,
                 packages:[
                     {
-                        name:"kg/xplayer/2.0.1",
+                        name:"kg/xplayer/2.0.2",
                         path:srcPath,
                         charset:"utf-8",
                         ignorePackageNameInUri:true
@@ -150,7 +150,7 @@ XiamiPlay.load({
             });
         }
 
-        S.use('kg/xplayer/2.0.1/mini, node', function(S, Xplayer, Node) {
+        S.use('kg/xplayer/2.0.2/mini, node', function(S, Xplayer, Node) {
             var $ = Node.all;
             var XiamiPlay = window.XiamiPlay = new Xplayer({
                 "autoplay": true
