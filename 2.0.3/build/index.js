@@ -16,18 +16,18 @@ KISSY.add('kg/xplayer/2.0.3/plugin/status',function(S) {
     /** @lends Xplayer.status.prototype */
     return {
         /**
-         * 歌曲时长
-         * @type {Number} 毫秒
+         * 歌曲时长 毫秒
+         * @type {Number} 
          */
         duration: 0,
         /**
-         * 当前歌曲时长
-         * @type {Number}   毫秒
+         * 当前歌曲时长 毫秒
+         * @type {Number}   
          */
         currentTime: 0,
         /**
-         * 已加载歌曲时长
-         * @type {Number}   毫秒
+         * 已加载歌曲时长 毫秒
+         * @type {Number}   
          */
         loadedTime: 0,
         // *
@@ -388,8 +388,6 @@ KISSY.add('kg/xplayer/2.0.3/plugin/audioSwf',function(S, Base, Swf, Status) {
 /**
  * @description MP3 播放核心插件
  * @author 宝码<nongyoubao@alibaba-inc.com>
- * @version 2.0.3
- * @copyright www.noyobo.com
  */
 KISSY.add('kg/xplayer/2.0.3/index',function(S, PlayerAudio, PlayerSwf) {
     'use strict';
@@ -444,18 +442,19 @@ KISSY.add('kg/xplayer/2.0.3/index',function(S, PlayerAudio, PlayerSwf) {
              * @type {Audio|Swf}
              */
             self.track = null;
+            self.player = null
             if (self.config.forceFlash) {
                 self.player = new PlayerSwf();
-                return self;
             };
             if (self.config.forceAudio) {
                 self.player = new PlayerAudio();
-                return self;
             };
-            var isSupport = self.supportAudio();
-            self.player = isSupport ? new PlayerAudio() : new PlayerSwf();
-            //self.player = new PlayerSwf();
+            if (self.player === null) {
+                var isSupport = self.supportAudio();
+                self.player = isSupport ? new PlayerAudio() : new PlayerSwf();
+            };
             self.status = self.player.status; // 引用
+            //self.player = new PlayerSwf();
             /**
              * Xplayer实例属性,正在播放的歌曲 TrackVo 对象
              * @type {Object}
@@ -610,6 +609,10 @@ KISSY.add('kg/xplayer/2.0.3/index',function(S, PlayerAudio, PlayerSwf) {
              * @event Xplayer.progress
              * @param {Object} [data={progress:0, duration:1}] 单位毫秒
              * @return {Object} 返回状态
+             */
+            /**
+             * 播放开始(加载文件), 触发该事件
+             * @event Xplayer.open
              */
             /**
              * 播放结束, 触发该事件

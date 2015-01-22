@@ -7,18 +7,18 @@ KISSY.add(function(S) {
     /** @lends Xplayer.status.prototype */
     return {
         /**
-         * 歌曲时长
-         * @type {Number} 毫秒
+         * 歌曲时长 毫秒
+         * @type {Number} 
          */
         duration: 0,
         /**
-         * 当前歌曲时长
-         * @type {Number}   毫秒
+         * 当前歌曲时长 毫秒
+         * @type {Number}   
          */
         currentTime: 0,
         /**
-         * 已加载歌曲时长
-         * @type {Number}   毫秒
+         * 已加载歌曲时长 毫秒
+         * @type {Number}   
          */
         loadedTime: 0,
         // *
