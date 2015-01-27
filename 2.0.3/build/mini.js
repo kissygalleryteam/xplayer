@@ -274,6 +274,7 @@ KISSY.add('kg/xplayer/2.0.3/mini',function(S, PlayerAudio) {
              * @type {Audio|Swf}
              */
             self.player = new PlayerAudio()
+            self.status = self.player.status;
                 //self.player = new PlayerSwf();
 
             /**

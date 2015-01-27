@@ -443,11 +443,11 @@ KISSY.add('kg/xplayer/2.0.3/index',function(S, PlayerAudio, PlayerSwf) {
              */
             self.track = null;
             self.player = null
-            if (self.config.forceFlash) {
-                self.player = new PlayerSwf();
-            };
-            if (self.config.forceAudio) {
+            if (self.config.forceAudio && !self.config.forceFlash) {
                 self.player = new PlayerAudio();
+            };
+            if (self.config.forceFlash && !self.config.forceAudio) {
+                self.player = new PlayerSwf();
             };
             if (self.player === null) {
                 var isSupport = self.supportAudio();
