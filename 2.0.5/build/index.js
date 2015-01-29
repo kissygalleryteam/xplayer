@@ -1,10 +1,10 @@
 /*
 combined files : 
 
-kg/xplayer/2.0.4/plugin/status
-kg/xplayer/2.0.4/plugin/audio
-kg/xplayer/2.0.4/plugin/audioSwf
-kg/xplayer/2.0.4/index
+kg/xplayer/2.0.5/plugin/status
+kg/xplayer/2.0.5/plugin/audio
+kg/xplayer/2.0.5/plugin/audioSwf
+kg/xplayer/2.0.5/index
 
 */
 /**
@@ -12,7 +12,7 @@ kg/xplayer/2.0.4/index
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @namespace Xplayer.status
  */
-KISSY.add('kg/xplayer/2.0.4/plugin/status',function(S) {
+KISSY.add('kg/xplayer/2.0.5/plugin/status',function(S) {
     /** @lends Xplayer.status.prototype */
     return {
         /**
@@ -49,7 +49,7 @@ KISSY.add('kg/xplayer/2.0.4/plugin/status',function(S) {
          * 暂停状态
          * @type {Boolean}
          */
-        isPaused: true,
+        isPaused: false,
         /**
          * 播放状态
          * @type {Boolean}
@@ -71,7 +71,7 @@ KISSY.add('kg/xplayer/2.0.4/plugin/status',function(S) {
  * @class Xplayer.audio
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.4/plugin/audio',function(S, Base, Status) {
+KISSY.add('kg/xplayer/2.0.5/plugin/audio',function(S, Base, Status) {
 
     var Html5Audio = Base.extend(
         /** @lends Xplayer.audio */
@@ -227,7 +227,7 @@ KISSY.add('kg/xplayer/2.0.4/plugin/audio',function(S, Base, Status) {
  * @class Xplayer.FlashPlayer
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.4/plugin/audioSwf',function(S, Base, Swf, Status) {
+KISSY.add('kg/xplayer/2.0.5/plugin/audioSwf',function(S, Base, Swf, Status) {
 
     function randomString(length) {
         var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
@@ -243,7 +243,7 @@ KISSY.add('kg/xplayer/2.0.4/plugin/audioSwf',function(S, Base, Swf, Status) {
     var win = window;
     var swfurl = "../flash/xplayer.swf?v=" + S.now();
     if (window.location.href.indexOf('github.xiami.com') === -1) {
-        swfurl = '//g.alicdn.com/kg/xplayer/2.0.4/xplayer.swf';
+        swfurl = '//g.alicdn.com/kg/xplayer/2.0.5/xplayer.swf';
         // swfurl = 'http://gitlabswf.xiami.com/kg/xplayer/build/xplayer.swf';
     };
     var FlashPlayer = Base.extend({
@@ -390,7 +390,7 @@ KISSY.add('kg/xplayer/2.0.4/plugin/audioSwf',function(S, Base, Swf, Status) {
  * @description MP3 播放核心插件
  * @author 宝码<nongyoubao@alibaba-inc.com>
  */
-KISSY.add('kg/xplayer/2.0.4/index',function(S, PlayerAudio, PlayerSwf) {
+KISSY.add('kg/xplayer/2.0.5/index',function(S, PlayerAudio, PlayerSwf) {
     'use strict';
     var EMPTY = '';
     /**
