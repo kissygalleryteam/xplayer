@@ -92,6 +92,7 @@ KISSY.add(function(S, Base, Status) {
                 self.status.pausePosition = 0;
                 try {
                     self.audio.currentTime = 0;
+                    self.audio.src = '';
                 } catch (e) {};
                 self.audio.pause();
             },

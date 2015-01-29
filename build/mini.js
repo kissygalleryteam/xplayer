@@ -1,9 +1,9 @@
 /*
 combined files : 
 
-kg/xplayer/2.0.3/plugin/status
-kg/xplayer/2.0.3/plugin/audio
-kg/xplayer/2.0.3/mini
+kg/xplayer/2.0.4/plugin/status
+kg/xplayer/2.0.4/plugin/audio
+kg/xplayer/2.0.4/mini
 
 */
 /**
@@ -11,7 +11,7 @@ kg/xplayer/2.0.3/mini
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @namespace Xplayer.status
  */
-KISSY.add('kg/xplayer/2.0.3/plugin/status',function(S) {
+KISSY.add('kg/xplayer/2.0.4/plugin/status',function(S) {
     /** @lends Xplayer.status.prototype */
     return {
         /**
@@ -70,7 +70,7 @@ KISSY.add('kg/xplayer/2.0.3/plugin/status',function(S) {
  * @class Xplayer.audio
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.3/plugin/audio',function(S, Base, Status) {
+KISSY.add('kg/xplayer/2.0.4/plugin/audio',function(S, Base, Status) {
 
     var Html5Audio = Base.extend(
         /** @lends Xplayer.audio */
@@ -158,6 +158,7 @@ KISSY.add('kg/xplayer/2.0.3/plugin/audio',function(S, Base, Status) {
                 self.status.pausePosition = 0;
                 try {
                     self.audio.currentTime = 0;
+                    self.audio.src = '';
                 } catch (e) {};
                 self.audio.pause();
             },
@@ -225,7 +226,7 @@ KISSY.add('kg/xplayer/2.0.3/plugin/audio',function(S, Base, Status) {
  * @version 1.0
  * @copyright www.noyobo.com
  */
-KISSY.add('kg/xplayer/2.0.3/mini',function(S, PlayerAudio) {
+KISSY.add('kg/xplayer/2.0.4/mini',function(S, PlayerAudio) {
     'use strict';
     var EMPTY = '';
     /**
