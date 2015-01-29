@@ -21,6 +21,7 @@ KISSY.add(function(S, Base, Status) {
 
                 // 正在播放
                 self.audio.addEventListener("loadstart", function(event) {
+                    S.log('Xplayer open')
                     self.fire('open');
                 });
                 // 正在播放

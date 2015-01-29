@@ -88,6 +88,7 @@ KISSY.add('kg/xplayer/2.0.5/plugin/audio',function(S, Base, Status) {
 
                 // 正在播放
                 self.audio.addEventListener("loadstart", function(event) {
+                    S.log('Xplayer open')
                     self.fire('open');
                 });
                 // 正在播放
@@ -330,7 +331,7 @@ KISSY.add('kg/xplayer/2.0.5/plugin/audioSwf',function(S, Base, Swf, Status) {
         stop: function() {
             var self = this;
             self.status.isPlaying = false;
-            self.status.isPaused = true;
+            self.status.isPaused = false;
             self.status.pausePosition = 0;
             self.player.callSWF('jsStop')
         },
