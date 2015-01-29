@@ -40,7 +40,7 @@ KISSY.add(function(S) {
          * 暂停状态
          * @type {Boolean}
          */
-        isPaused: true,
+        isPaused: false,
         /**
          * 播放状态
          * @type {Boolean}

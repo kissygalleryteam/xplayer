@@ -107,7 +107,7 @@ KISSY.add(function(S, Base, Swf, Status) {
         stop: function() {
             var self = this;
             self.status.isPlaying = false;
-            self.status.isPaused = true;
+            self.status.isPaused = false;
             self.status.pausePosition = 0;
             self.player.callSWF('jsStop')
         },
