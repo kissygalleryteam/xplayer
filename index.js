@@ -203,8 +203,14 @@ KISSY.add(function(S, PlayerAudio, PlayerSwf) {
                 var self = this;
                 //audio/mpeg
                 //application/octet-stream
-                var a = document.createElement('audio');
-                return !!(a.canPlayType && a.canPlayType('audio/mpeg').replace(/no/, ''));
+                try {
+                    var a = document.createElement('audio');
+                    return !!(a.canPlayType && 
+                        a.canPlayType('audio/mpeg').replace(/no/, ''));
+                } catch (e) {
+                    S.log(e);
+                }
+                return false;
             }
             /**
              * 正在播放中, 触发该事件

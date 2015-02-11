@@ -1,10 +1,10 @@
 /*
 combined files : 
 
-kg/xplayer/2.0.1/plugin/status
-kg/xplayer/2.0.1/plugin/audio
-kg/xplayer/2.0.1/plugin/audioSwf
-kg/xplayer/2.0.1/index
+kg/xplayer/2.0.2/plugin/status
+kg/xplayer/2.0.2/plugin/audio
+kg/xplayer/2.0.2/plugin/audioSwf
+kg/xplayer/2.0.2/index
 
 */
 /**
@@ -12,7 +12,7 @@ kg/xplayer/2.0.1/index
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @namespace Xplayer.status
  */
-KISSY.add('kg/xplayer/2.0.1/plugin/status',function(S) {
+KISSY.add('kg/xplayer/2.0.2/plugin/status',function(S) {
     /** @lends Xplayer.status.prototype */
     return {
         /**
@@ -71,7 +71,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/status',function(S) {
  * @class Xplayer.audio
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
+KISSY.add('kg/xplayer/2.0.2/plugin/audio',function(S, Base, Status) {
 
     var Html5Audio = Base.extend(
         /** @lends Xplayer.audio */
@@ -223,7 +223,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
  * @class Xplayer.FlashPlayer
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.1/plugin/audioSwf',function(S, Base, Swf, Status) {
+KISSY.add('kg/xplayer/2.0.2/plugin/audioSwf',function(S, Base, Swf, Status) {
 
     function randomString(length) {
         var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
@@ -384,7 +384,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audioSwf',function(S, Base, Swf, Status) {
  * @version 1.0
  * @copyright www.noyobo.com
  */
-KISSY.add('kg/xplayer/2.0.1/index',function(S, PlayerAudio, PlayerSwf) {
+KISSY.add('kg/xplayer/2.0.2/index',function(S, PlayerAudio, PlayerSwf) {
     'use strict';
     var EMPTY = '';
     /**
@@ -583,8 +583,14 @@ KISSY.add('kg/xplayer/2.0.1/index',function(S, PlayerAudio, PlayerSwf) {
                 var self = this;
                 //audio/mpeg
                 //application/octet-stream
-                var a = document.createElement('audio');
-                return !!(a.canPlayType && a.canPlayType('audio/mpeg').replace(/no/, ''));
+                try {
+                    var a = document.createElement('audio');
+                    return !!(a.canPlayType && 
+                        a.canPlayType('audio/mpeg').replace(/no/, ''));
+                } catch (e) {
+                    S.log(e);
+                }
+                return false;
             }
             /**
              * 正在播放中, 触发该事件
