@@ -42,6 +42,27 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        // https://www.npmjs.com/package/grunt-replace
+        replace: {
+            dist: {
+                options: {
+                  patterns: [
+                    {
+                      match: /\@VERSION/g,
+                      replacement: '<%= pkg.version %>'
+                    }
+                  ]
+                },
+                files: [
+                  {
+                      expand: true,
+                      flatten: true,
+                      src: ['build/*.js'],
+                      dest: 'build/'
+                    }
+                ]
+            }
+        },
         /**
          * 对JS文件进行压缩
          * @link https://github.com/gruntjs/grunt-contrib-uglify
@@ -176,7 +197,7 @@ module.exports = function(grunt) {
 
 
     grunt.registerTask('build', '默认构建任务', function() {
-        task.run(['clean:build', 'kmc', 'uglify', 'copy', 'less', 'cssmin']);
+        task.run(['clean:build', 'kmc', 'replace', 'uglify', 'copy', 'less', 'cssmin']);
     });
 
     grunt.registerTask('doc', 'js', function() {

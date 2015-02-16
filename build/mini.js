@@ -1,9 +1,9 @@
 /*
 combined files : 
 
-kg/xplayer/2.0.1/plugin/status
-kg/xplayer/2.0.1/plugin/audio
-kg/xplayer/2.0.1/mini
+kg/xplayer/2.0.3/plugin/status
+kg/xplayer/2.0.3/plugin/audio
+kg/xplayer/2.0.3/mini
 
 */
 /**
@@ -11,22 +11,22 @@ kg/xplayer/2.0.1/mini
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @namespace Xplayer.status
  */
-KISSY.add('kg/xplayer/2.0.1/plugin/status',function(S) {
+KISSY.add('kg/xplayer/2.0.3/plugin/status',function(S) {
     /** @lends Xplayer.status.prototype */
     return {
         /**
-         * 歌曲时长
-         * @type {Number}
+         * 歌曲时长 毫秒
+         * @type {Number} 
          */
         duration: 0,
         /**
-         * 当前歌曲时长
-         * @type {Number}
+         * 当前歌曲时长 毫秒
+         * @type {Number}   
          */
         currentTime: 0,
         /**
-         * 已加载歌曲时长
-         * @type {Number}
+         * 已加载歌曲时长 毫秒
+         * @type {Number}   
          */
         loadedTime: 0,
         // *
@@ -70,7 +70,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/status',function(S) {
  * @class Xplayer.audio
  * @extends {KISSY.Base}
  **/
-KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
+KISSY.add('kg/xplayer/2.0.3/plugin/audio',function(S, Base, Status) {
 
     var Html5Audio = Base.extend(
         /** @lends Xplayer.audio */
@@ -85,11 +85,14 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
             _addEvent: function() {
                 var self = this;
 
-
+                // 正在播放
+                self.audio.addEventListener("loadstart", function(event) {
+                    self.fire('open');
+                });
                 // 正在播放
                 self.audio.addEventListener("timeupdate", function(event) {
-                    self.status.currentTime = this.currentTime;
-                    self.status.duration = this.duration;
+                    self.status.currentTime = this.currentTime * 1000;
+                    self.status.duration = this.duration * 1000;
                     self.fire(event.type, self.status);
                 });
                 // 播放完成
@@ -222,7 +225,7 @@ KISSY.add('kg/xplayer/2.0.1/plugin/audio',function(S, Base, Status) {
  * @version 1.0
  * @copyright www.noyobo.com
  */
-KISSY.add('kg/xplayer/2.0.1/mini',function(S, PlayerAudio) {
+KISSY.add('kg/xplayer/2.0.3/mini',function(S, PlayerAudio) {
     'use strict';
     var EMPTY = '';
     /**
@@ -271,6 +274,7 @@ KISSY.add('kg/xplayer/2.0.1/mini',function(S, PlayerAudio) {
              * @type {Audio|Swf}
              */
             self.player = new PlayerAudio()
+            self.status = self.player.status;
                 //self.player = new PlayerSwf();
 
             /**
