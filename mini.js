@@ -53,6 +53,7 @@ KISSY.add(function(S, PlayerAudio) {
              * @type {Audio|Swf}
              */
             self.player = new PlayerAudio()
+            self.status = self.player.status;
                 //self.player = new PlayerSwf();
 
             /**
