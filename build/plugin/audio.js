@@ -1,4 +1,5 @@
-/**
+KISSY.add('kg/xplayer/2.1.0/plugin/audio',["base","./status"],function(S ,require, exports, module) {
+ /**
  * @description Audio API 封装
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @class Xplayer.audio
@@ -152,3 +153,5 @@ var Html5Audio = Base.extend(
   })
 
 module.exports = Html5Audio
+
+});
