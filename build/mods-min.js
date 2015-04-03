@@ -1,2 +1,1 @@
-/*!build time : 2015-01-29 4:15:55 PM*/
-KISSY.config("modules",{"kg/xplayer/2.0.4/mini":{requires:["base"]}});
+KISSY.config("requires",{"kg/xplayer/2.1.0/index":["./plugin/audio","./plugin/audioSwf"],"kg/xplayer/2.1.0/mini":["./plugin/audio"],"kg/xplayer/2.1.0/plugin/audio":["base","./status"],"kg/xplayer/2.1.0/plugin/audioSwf":["base","swf","./status"]});

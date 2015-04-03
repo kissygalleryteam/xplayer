@@ -1,0 +1,13 @@
+{
+    "name": "xplayer",
+    "version": "2.1.0",
+    "main": "index.js",
+    "ignore": [
+        "**/*",
+        "!index.js",
+        "!index.css",
+        "!lib/**/*"
+    ],
+    "dependencies": {
+    }
+}
