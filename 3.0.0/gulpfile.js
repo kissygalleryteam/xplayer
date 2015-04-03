@@ -47,7 +47,14 @@ function renderKmc(fileName) {
       outputModule: pkg + '/' + name
     };
   });
-  return gulp.src([src + '/**/*.js', '!./node_modules/**/*.js', '!./test/**/*.js', '!./gulpfile.js', '!./build/**/*.js'])
+  return gulp.src([
+      src + '/**/*.js',
+      '!./node_modules/**/*.js',
+      '!./test/**/*.js',
+      '!./gulpfile.js',
+      '!./build/**/*.js',
+      '!./templates/**/*.*'
+    ])
     .pipe(replace('@VERSION', version))
     //转换cmd模块为kissy模块
     .pipe(kmc.convert({
@@ -160,6 +167,6 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
-gulp.task('default', ['clean'], function(){
+gulp.task('default', ['clean'], function() {
   gulp.start(['kmc', 'swf', 'doc'])
 });

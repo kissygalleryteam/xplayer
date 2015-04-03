@@ -1,30 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Xplayer</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <title>Xplayer API 文档</title>
+    <meta name="description" content="MP3播放插件" />
+    <meta name="keywords" content="audio,javascript" />
+    <meta name="keyword" content="audio,javascript" />
+    <meta property="og:title" content="Xplayer.js"/>
+    <meta property="og:type" content="api"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="Xplayer.js"/>
+    <meta property="og:url" content="https://github.com/noyobo/xplayer"/>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Class: Xplayer</h1>
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"default":{"outputSourceFiles":true},"monospaceLinks":true,"cleverLinks":true,"linenums":true,"applicationName":"Xplayer.js","disqus":"xplayerjs","googleAnalytics":"UA-49864231-1","openGraph":{"title":"Xplayer.js","type":"api","image":"","site_name":"Xplayer.js","url":"https://github.com/noyobo/xplayer"},"meta":{"title":"Xplayer API 文档","description":"MP3播放插件","keyword":"audio,javascript"}};
+    </script>
+    
 
     
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', config.googleAnalytics]);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">Xplayer.js</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="Xplayer">
+            <span class="title">
+                <a href="Xplayer.html">Xplayer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Xplayer.player"><a href="Xplayer.html#player">player</a></li>
+            
+                <li data-name="Xplayer.track"><a href="Xplayer.html#track">track</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Xplayer.getTrack"><a href="Xplayer.html#getTrack">getTrack</a></li>
+            
+                <li data-name="Xplayer.load"><a href="Xplayer.html#load">load</a></li>
+            
+                <li data-name="Xplayer.on"><a href="Xplayer.html#on">on</a></li>
+            
+                <li data-name="Xplayer.pause"><a href="Xplayer.html#pause">pause</a></li>
+            
+                <li data-name="Xplayer.play"><a href="Xplayer.html#play">play</a></li>
+            
+                <li data-name="Xplayer.setPosition"><a href="Xplayer.html#setPosition">setPosition</a></li>
+            
+                <li data-name="Xplayer.setVolume"><a href="Xplayer.html#setVolume">setVolume</a></li>
+            
+                <li data-name="Xplayer.stop"><a href="Xplayer.html#stop">stop</a></li>
+            
+                <li data-name="Xplayer.supportAudio"><a href="Xplayer.html#supportAudio">supportAudio</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="Xplayer.event:ended"><a href="Xplayer.html#event:ended">ended</a></li>
+            
+                <li data-name="Xplayer.event:error"><a href="Xplayer.html#event:error">error</a></li>
+            
+                <li data-name="Xplayer.event:open"><a href="Xplayer.html#event:open">open</a></li>
+            
+                <li data-name="Xplayer.event:progress"><a href="Xplayer.html#event:progress">progress</a></li>
+            
+                <li data-name="Xplayer.event:timeupdate"><a href="Xplayer.html#event:timeupdate">timeupdate</a></li>
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="Xplayer.html">Class: Xplayer</h1>
+        
 
 
 
 <section>
-
+    
 <header>
     <h2>
     Xplayer
@@ -32,58 +126,64 @@
     
         <div class="class-description"><p>MP3播放组件</p></div>
     
-</header>
+</header>  
 
 <article>
     <div class="container-overview">
     
-
+    
     
         
 <dt>
-    <h4 class="name" id="Xplayer"><span class="type-signature"></span>new Xplayer<span class="signature">(<span class="optional">config</span>)</span><span class="type-signature"></span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="Xplayer">
+            
+            new Xplayer<span class="signature">(<span class="optional">config</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line11">line 11</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
 
     
-
     
-
     
-        <h5>Parameters:</h5>
+    
+    
         
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>config</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -92,54 +192,46 @@
 
             
             </td>
-
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
             
-
             
-
-            <td class="description last"><p>播放器参数</p>
-                <h6>Properties</h6>
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>播放器参数</p>
                 
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>autoplay</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -148,19 +240,7 @@
 
             
             </td>
-
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
             
                 <td class="default">
                 
@@ -168,17 +248,26 @@
                 
                 </td>
             
-
-            <td class="description last"><p>是否自动播放</p></td>
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>是否自动播放</p></td>
         </tr>
-
-    
-
+	
+	
+	
         <tr>
             
                 <td class="name"><code>forceFlash</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -187,19 +276,7 @@
 
             
             </td>
-
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
             
                 <td class="default">
                 
@@ -207,17 +284,26 @@
                 
                 </td>
             
-
-            <td class="description last"><p>强制使用Flash</p></td>
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>强制使用Flash</p></td>
         </tr>
-
-    
-
+	
+	
+	
         <tr>
             
                 <td class="name"><code>forceAudio</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -226,19 +312,7 @@
 
             
             </td>
-
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
             
                 <td class="default">
                 
@@ -246,50 +320,50 @@
                 
                 </td>
             
-
-            <td class="description last"><p>强制使用Audio</p></td>
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>强制使用Audio</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
             </td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
     
-
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line11">line 11</a>
-    </li></ul></dd>
     
-
     
-
+    
+    
     
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
@@ -298,68 +372,66 @@
         </ul>
     </dd>
     
-
+    
     
 </dl>
 
-
     
-    <h5>Requires:</h5>
-    <ul>
-        <li>module:KISSY>1.4.0</li>
-    </ul>
     
 
     
 
     
-
     
-
     
-
     
-
+    
+    
     
         <h5>Example</h5>
         
+
+    
     <pre class="prettyprint"><code>实例化 Xplayer
 ```
 var player = new Xplayer({
     'autoplay' : true
 })
 ```</code></pre>
+    
 
     
 </dd>
 
     
     </div>
-
     
-
     
-
+    
+    
+    
     
         <h3 class="subsection-title">Requires</h3>
-
+        
         <ul>
             <li>module:KISSY>1.4.0</li>
         </ul>
     
-
     
-
     
-
+    
+    
+    
     
         <h3 class="subsection-title">Members</h3>
-
+        
         <dl>
             
 <dt>
-    <h4 class="name" id="player"><span class="type-signature">&lt;static, readonly> </span>player<span class="type-signature"> :Audio|Swf</span></h4>
-
+    <div class="nameContainer">
+        <h4 class="name" id="player"><span class="type-signature static">static,readonly</span>Xplayer.player<span class="type-signature type audio">Audio</span> <span class="type-signature type swf">Swf</span> </h4>
+    </div>
+    
     
 </dt>
 <dd>
@@ -368,67 +440,43 @@ var player = new Xplayer({
         <p>Xplayer实例属性 Audio || swf</p>
     </div>
     
-
     
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">Audio</span>
-|
-
-<span class="param-type">Swf</span>
-
-
-            </li>
-        </ul>
-    
-
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line54">line 54</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
     
-
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="track"><span class="type-signature">&lt;static, readonly> </span>track<span class="type-signature"> :Object</span></h4>
-
+    <div class="nameContainer">
+        <h4 class="name" id="track"><span class="type-signature static">static,readonly</span>Xplayer.track<span class="type-signature type object">Object</span> </h4>
+    </div>
+    
     
 </dt>
 <dd>
@@ -437,48 +485,27 @@ var player = new Xplayer({
         <p>Xplayer实例属性,正在播放的歌曲 TrackVo 对象</p>
     </div>
     
-
     
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">Object</span>
-
-
-            </li>
-        </ul>
-    
-
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line74">line 74</a>
-    </li></ul></dd>
     
-
     
-
+    
+    
     
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
@@ -487,36 +514,48 @@ var player = new Xplayer({
         </ul>
     </dd>
     
-
+    
     
 </dl>
 
-
     
-
     
         <h5>Example</h5>
         
+
+    
     <pre class="prettyprint"><code>Xplayer.getTrack() // {trackVo}</code></pre>
+    
 
     
 </dd>
 
         </dl>
     
-
+    
     
         <h3 class="subsection-title">Methods</h3>
-
+        
         <dl>
             
 <dt>
-    <h4 class="name" id="getTrack"><span class="type-signature">&lt;static> </span>getTrack<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="getTrack">
+            
+            <span class="type-signature static">static</span>Xplayer.getTrack<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line183">line 183</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>获取当前播放器TrackVo对象</p>
@@ -524,92 +563,75 @@ var player = new Xplayer({
     
 
     
-
     
-
     
-
+    
+    
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line183">line 183</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>TrackVo</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-        
-
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="load"><span class="type-signature">&lt;static> </span>load<span class="signature">(track)</span><span class="type-signature"> &rarr; {<a href="Xplayer.html">Xplayer</a>}</span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="load">
+            
+            <span class="type-signature static">static</span>Xplayer.load<span class="signature">(track)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Xplayer.html">Xplayer</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line86">line 86</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>加载要播放的歌曲</p>
@@ -617,38 +639,35 @@ var player = new Xplayer({
     
 
     
-
     
-
     
-        <h5>Parameters:</h5>
+    
+    
         
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>track</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -657,40 +676,37 @@ var player = new Xplayer({
 
             
             </td>
-
             
-
             
-
-            <td class="description last"><p>歌曲JSON对象</p>
-                <h6>Properties</h6>
+            
+            <td class="description last">
+                
+                <p>歌曲JSON对象</p>
                 
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>url</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -699,101 +715,76 @@ var player = new Xplayer({
 
             
             </td>
-
             
-
             
-
-            <td class="description last"><p>歌曲的MP3地址,必填!!</p></td>
+            
+            <td class="description last">
+                
+                <p>歌曲的MP3地址,必填!!</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
             </td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
     
-
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line86">line 86</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>Xplayer</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Xplayer.html">Xplayer</a></span>
-
-
-    </dd>
-</dl>
-
-        
-
     
         <h5>Example</h5>
         
+
+    
     <pre class="prettyprint"><code>var player = Xplayer()
 plyaer.load({
     'url': 'http://example.com/kissy.mp3'
 })</code></pre>
+    
 
     
 </dd>
@@ -801,12 +792,23 @@ plyaer.load({
         
             
 <dt>
-    <h4 class="name" id="on"><span class="type-signature">&lt;static> </span>on<span class="signature">(event, callback)</span><span class="type-signature"> &rarr; {<a href="Xplayer.html">Xplayer</a>}</span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="on">
+            
+            <span class="type-signature static">static</span>Xplayer.on<span class="signature">(event, callback)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Xplayer.html">Xplayer</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line115">line 115</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>监听事件的跳板实现</p>
@@ -814,38 +816,35 @@ plyaer.load({
     
 
     
-
     
-
     
-        <h5>Parameters:</h5>
+    
+    
         
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>event</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -854,40 +853,37 @@ plyaer.load({
 
             
             </td>
-
             
-
             
-
-            <td class="description last"><p>事件名称</p>
-                <h6>Properties</h6>
+            
+            <td class="description last">
+                
+                <p>事件名称</p>
                 
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>timeupdate</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -896,21 +892,21 @@ plyaer.load({
 
             
             </td>
-
             
-
             
-
-            <td class="description last"><p>更新播放进度</p></td>
+            
+            <td class="description last">
+                
+                <p>更新播放进度</p></td>
         </tr>
-
-    
-
+	
+	
+	
         <tr>
             
                 <td class="name"><code>ended</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -919,27 +915,27 @@ plyaer.load({
 
             
             </td>
-
             
-
             
-
-            <td class="description last"><p>播放完成</p></td>
+            
+            <td class="description last">
+                
+                <p>播放完成</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
             </td>
         </tr>
-
-    
-
+	
+	
+	
         <tr>
             
                 <td class="name"><code>callback</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -948,95 +944,70 @@ plyaer.load({
 
             
             </td>
-
             
-
             
-
-            <td class="description last"><p>回调函数</p></td>
+            
+            <td class="description last">
+                
+                <p>回调函数</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
     
-
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line115">line 115</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>Xplayer对象</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Xplayer.html">Xplayer</a></span>
-
-
-    </dd>
-</dl>
-
-        
-
     
         <h5>Example</h5>
         
+
+    
     <pre class="prettyprint"><code>var player = new Xplayer()
 player.on("ended", function(e){
     alert( '播放结束了,需要做什么操作呢?' )
 })</code></pre>
+    
 
     
 </dd>
@@ -1044,12 +1015,23 @@ player.on("ended", function(e){
         
             
 <dt>
-    <h4 class="name" id="pause"><span class="type-signature">&lt;static> </span>pause<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Xplayer.html">Xplayer</a>}</span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="pause">
+            
+            <span class="type-signature static">static</span>Xplayer.pause<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Xplayer.html">Xplayer</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line158">line 158</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>暂停播放</p>
@@ -1057,92 +1039,75 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-
+    
+    
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line158">line 158</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>Xplayer</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Xplayer.html">Xplayer</a></span>
-
-
-    </dd>
-</dl>
-
-        
-
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="play"><span class="type-signature">&lt;static> </span>play<span class="signature">(<span class="optional">time</span>)</span><span class="type-signature"> &rarr; {<a href="Xplayer.html">Xplayer</a>}</span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="play">
+            
+            <span class="type-signature static">static</span>Xplayer.play<span class="signature">(<span class="optional">time</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Xplayer.html">Xplayer</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line134">line 134</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>开始播放</p>
@@ -1150,42 +1115,37 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-        <h5>Parameters:</h5>
+    
+    
         
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>time</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -1194,19 +1154,7 @@ player.on("ended", function(e){
 
             
             </td>
-
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
             
                 <td class="default">
                 
@@ -1214,92 +1162,88 @@ player.on("ended", function(e){
                 
                 </td>
             
-
-            <td class="description last"><p>从第几秒开始播放</p></td>
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>从第几秒开始播放</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
     
-
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line134">line 134</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Xplayer.html">Xplayer</a></span>
-
-
-    </dd>
-</dl>
-
-        
-
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="setPosition"><span class="type-signature">&lt;static> </span>setPosition<span class="signature">(<span class="optional">val</span>)</span><span class="type-signature"> &rarr; {<a href="Xplayer.html">Xplayer</a>}</span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="setPosition">
+            
+            <span class="type-signature static">static</span>Xplayer.setPosition<span class="signature">(<span class="optional">val</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Xplayer.html">Xplayer</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line168">line 168</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>设置播放头位置</p>
@@ -1307,42 +1251,37 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-        <h5>Parameters:</h5>
+    
+    
         
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>val</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -1351,19 +1290,7 @@ player.on("ended", function(e){
 
             
             </td>
-
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
             
                 <td class="default">
                 
@@ -1371,96 +1298,88 @@ player.on("ended", function(e){
                 
                 </td>
             
-
-            <td class="description last"><p>播放头位置,单位S</p></td>
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>播放头位置,单位S</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
     
-
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line168">line 168</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>Xplayer</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Xplayer.html">Xplayer</a></span>
-
-
-    </dd>
-</dl>
-
-        
-
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="setVolume"><span class="type-signature">&lt;static> </span>setVolume<span class="signature">(val)</span><span class="type-signature"></span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="setVolume">
+            
+            <span class="type-signature static">static</span>Xplayer.setVolume<span class="signature">(val)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line192">line 192</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>设置音量</p>
@@ -1468,38 +1387,35 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-        <h5>Parameters:</h5>
+    
+    
         
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>val</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -1508,78 +1424,78 @@ player.on("ended", function(e){
 
             
             </td>
-
             
-
             
-
-            <td class="description last"><p>音量大小</p></td>
+            
+            <td class="description last">
+                
+                <p>音量大小</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
     
-
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line192">line 192</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
     
-
     
-
     
-
+    
+    
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="stop"><span class="type-signature">&lt;static> </span>stop<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Xplayer.html">Xplayer</a>}</span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="stop">
+            
+            <span class="type-signature static">static</span>Xplayer.stop<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Xplayer.html">Xplayer</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line148">line 148</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>停止播放</p>
@@ -1587,92 +1503,75 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-
+    
+    
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line148">line 148</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>Xplayer</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Xplayer.html">Xplayer</a></span>
-
-
-    </dd>
-</dl>
-
-        
-
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="supportAudio"><span class="type-signature">&lt;static> </span>supportAudio<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <div class="nameContainer">
+        <h4 class="name" id="supportAudio">
+            
+            <span class="type-signature static">static</span>Xplayer.supportAudio<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line201">line 201</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>支持Audio检测</p>
@@ -1680,100 +1579,83 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-
+    
+    
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line201">line 201</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>是否支持Audio</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-        
-
     
 </dd>
 
         </dl>
     
-
     
-
+    
+    
     
         <h3 class="subsection-title">Events</h3>
-
+        
         <dl>
             
 <dt>
-    <h4 class="name" id="event:ended">ended</h4>
+    <div class="nameContainer">
+        <h4 class="name" id="event:ended">
+            
+            Xplayer.event:ended
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line235">line 235</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>播放结束, 触发该事件</p>
@@ -1781,70 +1663,70 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-
+    
+    
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line235">line 235</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
     
-
     
-
     
-
+    
+    
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="event:error">error</h4>
+    <div class="nameContainer">
+        <h4 class="name" id="event:error">
+            
+            Xplayer.event:error
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line239">line 239</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>播放错误, 触发该事件</p>
@@ -1852,70 +1734,70 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-
+    
+    
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line239">line 239</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
     
-
     
-
     
-
+    
+    
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="event:open">open</h4>
+    <div class="nameContainer">
+        <h4 class="name" id="event:open">
+            
+            Xplayer.event:open
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line231">line 231</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>播放开始(加载文件), 触发该事件</p>
@@ -1923,70 +1805,70 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-
+    
+    
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line231">line 231</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
     
-
     
-
     
-
+    
+    
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="event:progress">progress</h4>
+    <div class="nameContainer">
+        <h4 class="name" id="event:progress">
+            
+            Xplayer.event:progress
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line225">line 225</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>正在加载中, 触发该事件</p>
@@ -1994,42 +1876,37 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-        <h5>Parameters:</h5>
+    
+    
         
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>data</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -2038,19 +1915,7 @@ player.on("ended", function(e){
 
             
             </td>
-
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
             
                 <td class="default">
                 
@@ -2058,96 +1923,88 @@ player.on("ended", function(e){
                 
                 </td>
             
-
-            <td class="description last"><p>单位毫秒</p></td>
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>单位毫秒</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
     
-
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line225">line 225</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>返回状态</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-        
-
     
 </dd>
 
         
             
 <dt>
-    <h4 class="name" id="event:timeupdate">timeupdate</h4>
+    <div class="nameContainer">
+        <h4 class="name" id="event:timeupdate">
+            
+            Xplayer.event:timeupdate
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="index.js.html">/Users/noyobo/home/gitlab/kg/xplayer/index.js</a>, <a href="index.js.html#line219">line 219</a>
+        </div>
+        
+    </div>
 
     
 </dt>
 <dd>
-
+    
     
     <div class="description">
         <p>正在播放中, 触发该事件</p>
@@ -2155,42 +2012,37 @@ player.on("ended", function(e){
     
 
     
-
     
-
     
-        <h5>Parameters:</h5>
+    
+    
         
 
 <table class="params">
     <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
         <tr>
             
                 <td class="name"><code>data</code></td>
             
-
+            
             <td class="type">
             
                 
@@ -2199,19 +2051,7 @@ player.on("ended", function(e){
 
             
             </td>
-
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
             
                 <td class="default">
                 
@@ -2219,84 +2059,65 @@ player.on("ended", function(e){
                 
                 </td>
             
-
-            <td class="description last"><p>单位毫秒</p></td>
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>单位毫秒</p></td>
         </tr>
-
-    
-    </tbody>
+	
+	
+	</tbody>
 </table>
     
-
+    
     
 <dl class="details">
     
-
+        
+    
+    
     
 
     
-
     
-
     
-
     
-
     
-
     
-
     
-
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line219">line 219</a>
-    </li></ul></dd>
     
-
     
-
     
-
+    
+    
+    
     
 </dl>
 
-
+    
     
 
     
 
     
-
+    
+    
+    
+    
+    
     
 
-    
 
     
-    <h5>Returns:</h5>
     
-            
-<div class="param-desc">
-    <p>返回状态</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-        
-
     
 </dd>
 
@@ -2304,24 +2125,27 @@ player.on("ended", function(e){
     
 </article>
 
-</section>
+</section>  
 
 
 
 
+
+        
+        <!-- disqus code -->
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <!-- // disqus code -->
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Fri Apr 03 2015 14:28:34 GMT+0800 (CST)
+        </footer>
+    </div>
 </div>
-
-<nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="Xplayer.html">Xplayer</a></li></ul><h3>Events</h3><ul><li><a href="Xplayer.html#event:ended">ended</a></li><li><a href="Xplayer.html#event:error">error</a></li><li><a href="Xplayer.html#event:open">open</a></li><li><a href="Xplayer.html#event:progress">progress</a></li><li><a href="Xplayer.html#event:timeupdate">timeupdate</a></li></ul>
-</nav>
-
-<br clear="both">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Fri Apr 03 2015 14:11:45 GMT+0800 (CST)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
 </body>
 </html>
