@@ -18,10 +18,9 @@ KISSY.add(function(S, Base, Swf, Status) {
         return str;
     };
     var win = window;
-    var swfurl = "../flash/xplayer.swf?v=" + S.now();
-    if (window.location.href.indexOf('github.xiami.com') === -1) {
-        swfurl = '//g.alicdn.com/kg/xplayer/@VERSION/xplayer.swf';
-        // swfurl = 'http://gitlabswf.xiami.com/kg/xplayer/build/xplayer.swf';
+    var swfurl = '//g.alicdn.com/kg/xplayer/@VERSION/xplayer.swf';
+    if (window.location.href.indexOf('__SWF_DEBUG__') !== -1) {
+        swfurl = "../flash/xplayer.swf?v=" + S.now();
     };
     var FlashPlayer = Base.extend({
         initializer: function() {
