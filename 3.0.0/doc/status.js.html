@@ -149,39 +149,72 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="status.js.html">Source: plugin/status.js</h1>
         
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article class="readme"><h2 id="xplayer">xplayer</h2>
-<ul>
-<li>教程：<a href="/xplayer/doc/guide/index.html">/xplayer/doc/guide/index.html</a></li>
-<li>demo：<a href="/xplayer/doc/demo/index.html">/xplayer/doc/demo/index.html</a></li>
-<li>MINI demo：<a href="/xplayer/doc/demo/mini.html">/xplayer/doc/demo/mini.html</a></li>
-<li>文档介绍：<a href="/xplayer/doc/doc/index.html">/xplayer/doc/doc/index.html</a></li>
-</ul>
-<p><a href="CHANGELOG.md">changelog</a></p>
-</article>
-    </section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * @description 播放器自身状态属性
+ * @author 宝码&lt;nongyoubao@alibaba-inc.com>
+ * @namespace Xplayer.status
+ */
 
+/** @lends Xplayer.status.prototype */
+module.exports = {
+  /**
+   * 歌曲时长 毫秒
+   * @type {Number} 
+   */
+  duration: 0,
+  /**
+   * 当前歌曲时长 毫秒
+   * @type {Number}   
+   */
+  currentTime: 0,
+  /**
+   * 已加载歌曲时长 毫秒
+   * @type {Number}   
+   */
+  loadedTime: 0,
+  // *
+  //  * 已经加载歌曲市场 百分比
+  //  * @type {Number}
+
+  // loadedPercent: 0,
+  /**
+   * 当前音量
+   * @type {Number}
+   */
+  volume: 0.5,
+  // *
+  //  * 静音状态
+  //  * @type {Boolean}
+
+  // muted: false,
+  /**
+   * 暂停状态
+   * @type {Boolean}
+   */
+  isPaused: false,
+  /**
+   * 播放状态
+   * @type {Boolean}
+   */
+  isPlaying: false,
+  /**
+   * 暂停点位置
+   * @type {Number}
+   */
+  pausePosition: 0,
+
+  readyState: 0 //1:HAVE_NOTHING 2:HAVE_METADATA 3.HAVE_CURRENT_DATA 4.HAVE_FUTURE_DATA 5.HAVE_ENOUGH_DATA
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

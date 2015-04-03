@@ -1,10 +1,17 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
 <!doctype html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Xplayer的demo</title>
+<<<<<<< HEAD
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.8/seed.js" charset="utf-8"></script>
+=======
     <script src="//g.alicdn.com/kissy/k/6.0.0/seed-min.js" charset="utf-8"></script>
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
     <style type="text/css"> body{padding: 10px;} .run{border: 1px solid #999; display: block; font-family: 'Helvetica Neue', Helvetica, Arial; font-size: 12px; height: 16px; line-height: 16px; position: absolute; right: 15px; cursor: pointer; padding: 2px } pre{border-bottom-color: #000; border-bottom-style: none; border-bottom-width: 0px; border-image-outset: 0px; border-image-repeat: stretch; border-image-slice: 100%; border-image-source: none; border-image-width: 1; border-left-color: #BBB; border-left-style: solid; border-left-width: 4px; border-right-color: #BBB; border-right-style: solid; border-right-width: 4px; border-top-color: #000; border-top-style: none; border-top-width: 0px; display: block; font-family: Monaco, Consolas, 'Lucida Console', monospace; font-size: 12px; font-style: normal; line-height: 18px; margin-bottom: 25px; margin-left: 0px; margin-right: 0px; margin-top: 0px; padding-bottom: 2px; padding-left: 15px; padding-right: 0px; padding-top: 2px; white-space: pre;} .container{width: 600px; position: relative; }
     #progress{
         position: relative;
@@ -71,11 +78,19 @@ XiamiPlay.load({
 <script>
     var S = KISSY;
     if (S.Config.debug) {
+<<<<<<< HEAD
+        var debugPath = "../";
+        S.config({
+            packages:[
+                {
+                    name:"kg/xplayer/2.1.0",
+=======
         var debugPath = "http://localhost:5555/";
         S.config({
             packages:[
                 {
                     name:"kg/xplayer/3.0.0",
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
                     path:debugPath,
                     charset:"utf-8",
                     ignorePackageNameInUri: true
@@ -83,11 +98,19 @@ XiamiPlay.load({
             ]
         });
     }
+<<<<<<< HEAD
+    S.use('kg/xplayer/2.1.0/index, node', function(S, Xplayer, Node) {
+        var $ = Node.all;
+        var XiamiPlay = window.XiamiPlay = new Xplayer({
+            "autoplay": true,
+            'forceFlash' : true
+=======
     S.use('kg/xplayer/3.0.0/index, node', function(S, Xplayer, Node) {
         var $ = Node.all;
         var XiamiPlay = window.XiamiPlay = new Xplayer({
             "autoplay": true,
             'forceFlash': true
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
         });
 
         $("#play").on("click", function() {
@@ -131,4 +154,8 @@ XiamiPlay.load({
 </script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd

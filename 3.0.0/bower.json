@@ -1,6 +1,10 @@
 {
     "name": "xplayer",
+<<<<<<< HEAD
+    "version": "2.1.0",
+=======
     "version": "3.0.0",
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
     "main": "index.js",
     "ignore": [
         "**/*",
@@ -10,4 +14,8 @@
     ],
     "dependencies": {
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd

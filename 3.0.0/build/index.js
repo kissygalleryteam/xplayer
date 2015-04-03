@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+KISSY.add('kg/xplayer/2.1.0/index',["./plugin/audio","./plugin/audioSwf"],function(S ,require, exports, module) {
+=======
 KISSY.add('kg/xplayer/3.0.0/index',["./lib/audio","./lib/audioSwf"],function(S ,require, exports, module) {
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
  /**
  * @description MP3 播放核心插件
  * @author 宝码<nongyoubao@alibaba-inc.com>
@@ -6,9 +10,14 @@ KISSY.add('kg/xplayer/3.0.0/index',["./lib/audio","./lib/audioSwf"],function(S ,
 
 'use strict'
 var EMPTY = ''
+<<<<<<< HEAD
+var PlayerAudio = require('./plugin/audio')
+var PlayerSwf = require('./plugin/audioSwf')
+=======
 var PlayerAudio = require('./lib/audio')
 var PlayerSwf = require('./lib/audioSwf')
 
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
 /**
  * @name Xplayer
  * @class MP3播放组件

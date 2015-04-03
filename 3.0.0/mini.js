@@ -7,7 +7,11 @@
 
 'use strict'
 var EMPTY = ''
+<<<<<<< HEAD
+var PlayerAudio = require('./plugin/audio')
+=======
 var PlayerAudio = require('./lib/audio')
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
   /**
    * @name Xplayer
    * @class MP3播放组件
