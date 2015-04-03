@@ -1,4 +1,5 @@
-/**
+KISSY.add('kg/xplayer/2.1.0/plugin/status',[],function(S ,require, exports, module) {
+ /**
  * @description 播放器自身状态属性
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @namespace Xplayer.status
@@ -54,3 +55,5 @@ module.exports = {
 
   readyState: 0 //1:HAVE_NOTHING 2:HAVE_METADATA 3.HAVE_CURRENT_DATA 4.HAVE_FUTURE_DATA 5.HAVE_ENOUGH_DATA
 }
+
+});

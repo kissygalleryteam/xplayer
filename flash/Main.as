@@ -243,6 +243,10 @@
 			_soundTime.start();
 			_soundProgressTime.addEventListener(TimerEvent.TIMER, progressHandler);
 			_soundProgressTime.start();
+			
+			if (_interface) {
+				ExternalInterface.call("window." + _interface + ".open");
+			}
 		}
 		
 		private function timeupdateHandler(event:TimerEvent):void {
