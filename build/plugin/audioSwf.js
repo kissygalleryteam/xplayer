@@ -1,4 +1,5 @@
-/**
+KISSY.add('kg/xplayer/2.1.0/plugin/audioSwf',["base","swf","./status"],function(S ,require, exports, module) {
+ /**
  * @description Flash 播放器封装
  * @author 宝码<nongyoubao@alibaba-inc.com>
  * @class Xplayer.FlashPlayer
@@ -20,7 +21,7 @@ function randomString(length) {
   return str
 }
 var win = window
-var swfurl = '//g.alicdn.com/kg/xplayer/@VERSION/xplayer.swf'
+var swfurl = '//g.alicdn.com/kg/xplayer/2.1.0/xplayer.swf'
 if (window.location.href.indexOf('ks-debug') !== -1) {
   swfurl = '../flash/xplayer.swf?v=' + S.now()
 }
@@ -159,3 +160,5 @@ var FlashPlayer = Base.extend({
 })
 
 module.exports = FlashPlayer
+
+});
