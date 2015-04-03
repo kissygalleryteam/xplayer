@@ -123,41 +123,6 @@ gulp.task('lint', function() {
     }))
 })
 
-var jsdoc = require('gulp-jsdoc');
-
-gulp.task('doc', ['clean'], function() {
-  return gulp
-    .src(['index.js', 'plugin/status.js', 'README.md'])
-    .pipe(jsdoc.parser({
-      plugins: ['plugins/markdown']
-    }))
-    .pipe(jsdoc.generator('./doc', {
-      'path': './templates/jaguar',
-      'linenums': true,
-      'cleverLinks': true,
-      'monospaceLinks': true,
-      'default': {
-        'outputSourceFiles': true
-      },
-      'applicationName': 'Xplayer.js',
-      'disqus': 'xplayerjs',
-      'googleAnalytics': 'UA-49864231-1',
-      'openGraph': {
-        'title': 'Xplayer.js',
-        'type': 'api',
-        'image': '',
-        'site_name': 'Xplayer.js',
-        'url': 'https://github.com/noyobo/xplayer'
-      },
-      'meta': {
-        'title': 'Xplayer API 文档',
-        'description': 'MP3播放插件',
-        'keyword': 'audio,javascript'
-      }
-    }))
-
-})
-
 var clean = require('gulp-clean');
 
 gulp.task('clean', function() {
@@ -167,6 +132,11 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
+<<<<<<< HEAD
 gulp.task('default', ['clean'], function() {
   gulp.start(['kmc', 'swf', 'doc'])
+=======
+gulp.task('default', ['clean'], function(){
+  gulp.start(['kmc', 'swf'])
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
 });
