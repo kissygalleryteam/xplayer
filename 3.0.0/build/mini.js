@@ -1,45 +1,41 @@
-KISSY.add('kg/xplayer/3.0.0/index',["./lib/audio","./lib/audioSwf"],function(S ,require, exports, module) {
+KISSY.add('kg/xplayer/3.0.0/mini',["./lib/audio"],function(S ,require, exports, module) {
  /**
  * @description MP3 播放核心插件
  * @author 宝码<nongyoubao@alibaba-inc.com>
+ * @version 1.0
+ * @copyright www.noyobo.com
  */
 
 'use strict'
 var EMPTY = ''
 var PlayerAudio = require('./lib/audio')
-var PlayerSwf = require('./lib/audioSwf')
-
-/**
- * @name Xplayer
- * @class MP3播放组件
- * @constructor
- * @param {Object} [config] 播放器参数
- * @param {Boolean} [config.autoplay=false] 是否自动播放
- * @param {Boolean} [config.forceFlash=false] 强制使用Flash
- * @param {Boolean} [config.forceAudio=false] 强制使用Audio
- * @requires KISSY>1.4.0
- * @see http://docs.kissyui.com/
- * @example
- * 实例化 Xplayer
- * ```
- * var player = new Xplayer({
- *     'autoplay' : true
- * })
- * ```
- */
+  /**
+   * @name Xplayer
+   * @class MP3播放组件
+   * @constructor
+   * @param {Object} [config] 播放器参数
+   * @param {Boolean} [config.autoplay=false] 是否自动播放
+   * @requires KISSY>1.4.0
+   * @see http://docs.kissyui.com/
+   * @example
+   * 实例化 Xplayer
+   * ```
+   * var player = new Xplayer({
+   *     'autoplay' : true
+   * })
+   * ```
+   */
 
 function Xplayer(config) {
   var self = this
-  /**
-   * 配置项
-   * @type {Object}
-   */
+    /**
+     * 配置项
+     * @type {Object}
+     */
   self.config = S.mix({
-    'autoplay': false,
-    'forceFlash': false,
-    'forceAudio': false
-  }, config, true)
-  // 立即初始化
+      'autoplay': false
+    }, config, true)
+    // 立即初始化
   self._init()
 }
 
@@ -52,26 +48,16 @@ Xplayer.prototype = {
    */
   _init: function() {
     var self = this
-    /**
-     * Xplayer实例属性 Audio || swf
-     * @name Xplayer.player
-     * @readOnly
-     * @type {Audio|Swf}
-     */
-    self.track = null
-    self.player = null
-    if (self.config.forceAudio && !self.config.forceFlash) {
-      self.player = new PlayerAudio()
-    }
-    if (self.config.forceFlash && !self.config.forceAudio) {
-      self.player = new PlayerSwf()
-    }
-    if (self.player === null) {
-      var isSupport = self.supportAudio()
-      self.player = isSupport ? new PlayerAudio() : new PlayerSwf()
-    }
-    self.status = self.player.status // 引用
-    //self.player = new PlayerSwf()
+      /**
+       * Xplayer实例属性 Audio || swf
+       * @name Xplayer.player
+       * @readOnly
+       * @type {Audio|Swf}
+       */
+    self.player = new PlayerAudio()
+    self.status = self.player.status
+      //self.player = new PlayerSwf()
+
     /**
      * Xplayer实例属性,正在播放的歌曲 TrackVo 对象
      * @type {Object}
@@ -81,7 +67,7 @@ Xplayer.prototype = {
      * Xplayer.getTrack() // {trackVo}
      * @see getTrack()
      */
-
+    self.track = null
     return self
   },
   /**
@@ -196,42 +182,20 @@ Xplayer.prototype = {
    * @param {Number} val 音量大小
    */
   setVolume: function(val) {
-    var self = this
-    self.player.setVolume(val)
-  },
-  /**
-   * 支持Audio检测
-   * @method Xplayer.supportAudio
-   * @return {Boolean} 是否支持Audio
-   */
-  supportAudio: function() {
-      // var self = this
-      //audio/mpeg
-      //application/octet-stream
-      try {
-        var a = document.createElement('audio')
-        return !!(a.canPlayType &&
-          a.canPlayType('audio/mpeg').replace(/no/, ''))
-      } catch (e) {
-        S.log(e)
-      }
-      return false
+      var self = this
+      self.player.setVolume(val)
     }
     /**
      * 正在播放中, 触发该事件
      * @event Xplayer.timeupdate
-     * @param {Object} [data={currentTime:0, duration:1}] 单位毫秒
+     * @param {Object} [data={currentTime:0, duration:1}] 返回内容
      * @return {Object} 返回状态
      */
     /**
      * 正在加载中, 触发该事件
      * @event Xplayer.progress
-     * @param {Object} [data={progress:0, duration:1}] 单位毫秒
+     * @param {Object} [data={progress:0, duration:1}] 返回内容
      * @return {Object} 返回状态
-     */
-    /**
-     * 播放开始(加载文件), 触发该事件
-     * @event Xplayer.open
      */
     /**
      * 播放结束, 触发该事件

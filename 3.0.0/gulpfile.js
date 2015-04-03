@@ -1,7 +1,5 @@
 var gulp = require('gulp');
 var kmc = require('gulp-kmc');
-var less = require('gulp-less');
-var css = require('gulp-mini-css');
 var copy = require('gulp-copy');
 var kclean = require('gulp-kclean');
 var rename = require("gulp-rename");
@@ -85,22 +83,6 @@ gulp.task('kmc', function() {
   renderKmc(['index']);
 });
 
-gulp.task('mini-css', function() {
-  return gulp.src([src + '/**/*.css', '!./node_modules/**/*.css', '!./build/**/*.css'])
-    .pipe(gulp.dest(dest))
-    .pipe(css({
-      ext: '-min.css'
-    }))
-    .pipe(gulp.dest(dest));
-});
-
-gulp.task('less', function() {
-  return gulp.src([src + '/**/*.less', '!./node_modules/**/*.less'])
-    .pipe(less())
-    .pipe(gulp.dest(src));
-});
-
-gulp.task('css', ['less', 'mini-css']);
 
 
 gulp.task('xtpl', function() {
@@ -127,13 +109,57 @@ var jshint = require('gulp-jshint')
 var stylish = require('jshint-stylish')
 gulp.task('lint', function() {
   return gulp
-    .src(['./lib/*.js', 'index.js', '!./lib/swfobject.js'])
+    .src(['./lib/*.js', 'index.js', 'mini.js', '!./lib/swfobject.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter(stylish, {
       verbose: true
     }))
 })
 
+var jsdoc = require('gulp-jsdoc');
 
+gulp.task('doc', ['clean'], function() {
+  return gulp
+    .src(['index.js', 'plugin/status.js', 'README.md'])
+    .pipe(jsdoc.parser({
+      plugins: ['plugins/markdown']
+    }))
+    .pipe(jsdoc.generator('./doc', {
+      'path': './templates/jaguar',
+      'linenums': true,
+      'cleverLinks': true,
+      'monospaceLinks': true,
+      'default': {
+        'outputSourceFiles': true
+      },
+      'applicationName': 'Xplayer.js',
+      'disqus': 'xplayerjs',
+      'googleAnalytics': 'UA-49864231-1',
+      'openGraph': {
+        'title': 'Xplayer.js',
+        'type': 'api',
+        'image': '',
+        'site_name': 'Xplayer.js',
+        'url': 'https://github.com/noyobo/xplayer'
+      },
+      'meta': {
+        'title': 'Xplayer API 文档',
+        'description': 'MP3播放插件',
+        'keyword': 'audio,javascript'
+      }
+    }))
 
-gulp.task('default', ['kmc', 'css', 'swf']);
+})
+
+var clean = require('gulp-clean');
+
+gulp.task('clean', function() {
+  return gulp.src(['./build', './doc'], {
+      read: false
+    })
+    .pipe(clean());
+});
+
+gulp.task('default', ['clean'], function(){
+  gulp.start(['kmc', 'swf', 'doc'])
+});

@@ -4,17 +4,16 @@ KISSY.config('requires',{
         "./lib/audio",
         "./lib/audioSwf"
     ],
+    "kg/xplayer/3.0.0/mini": [
+        "./lib/audio"
+    ],
     "kg/xplayer/3.0.0/lib/audio": [
         "base",
         "./status"
     ],
     "kg/xplayer/3.0.0/lib/audioSwf": [
         "base",
-        "./swfobject",
+        "kg/swf/0.0.1/",
         "./status"
-    ],
-    "kg/xplayer/3.0.0/lib/main": [
-        "node",
-        "base"
     ]
 });

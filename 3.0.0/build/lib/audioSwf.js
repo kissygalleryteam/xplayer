@@ -1,4 +1,4 @@
-KISSY.add('kg/xplayer/3.0.0/lib/audioSwf',["base","./swfobject","./status"],function(S ,require, exports, module) {
+KISSY.add('kg/xplayer/3.0.0/lib/audioSwf',["base","kg/swf/0.0.1/","./status"],function(S ,require, exports, module) {
  /**
  * @description Flash 播放器封装
  * @author 宝码<nongyoubao@alibaba-inc.com>
@@ -7,8 +7,9 @@ KISSY.add('kg/xplayer/3.0.0/lib/audioSwf',["base","./swfobject","./status"],func
  **/
 'use strict';
 var Base = require('base');
-var swfobject = require('./swfobject');
+var Swf = require('kg/swf/0.0.1/');
 var Status = require('./status');
+
 function randomString(length) {
   var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
   if (!length) {
@@ -19,24 +20,21 @@ function randomString(length) {
     str += chars[Math.floor(Math.random() * chars.length)];
   }
   return str;
-};
+}
+
 var win = window;
 var swfurl = '//g.alicdn.com/kg/xplayer/3.0.0/xplayer.swf';
 if (window.location.href.indexOf('ks-debug') !== -1) {
-  swfurl = "../flash/xplayer.swf?v=" + S.now();
-};
+  swfurl = '../flash/xplayer.swf?v=' + S.now();
+}
 
 var FlashPlayer = Base.extend({
   initializer: function() {
     var self = this;
     var swfid = randomString(10);
     var XPLAYERINTERFACE = 'Xplayer_' + swfid;
-    var divid = 'XP_' + XPLAYERINTERFACE;
     var wrap = document.createElement('DIV');
-    var swfWrap = document.createElement('DIV');
-    swfWrap.id = divid + '_swf';
-    wrap.appendChild(swfWrap);
-    wrap.id = divid;
+    wrap.id = 'XP_' + XPLAYERINTERFACE;
     wrap.style.position = 'absolute';
     wrap.style.width = '1px';
     wrap.style.height = '1px';
@@ -48,69 +46,58 @@ var FlashPlayer = Base.extend({
       attrs: {
         width: 1,
         height: 1,
-        id: "J_xiamiPlayerSwf_" + swfid
+        id: 'J_xiamiPlayerSwf_' + swfid
       },
       params: {
-        allowScriptAccess: "always",
-        wmode: "window",
+        allowScriptAccess: 'always',
+        wmode: 'window',
         flashVars: {
           'xplayerinterface': XPLAYERINTERFACE
         }
       },
       render: wrap,
-      version: "9.0"
+      version: '9.0'
     };
 
     self.status = Status;
     self.interface = win[XPLAYERINTERFACE] = {
       open: function() {
-        self.fire('open')
+        self.fire('open');
       },
       timeupdate: function(data) {
         self.status.currentTime = data.currentTime;
         self.status.duration = data.duration;
-        self.fire('timeupdate', data)
+        self.fire('timeupdate', data);
       },
       ended: function(data) {
         self.status.isPlaying = false;
         self.status.isPaused = false;
-        self.fire('ended', data)
+        self.fire('ended', data);
       },
       progress: function(data) {
-        self.fire('progress', data)
+        self.fire('progress', data);
       },
       error: function() {
         S.log('error');
         self.fire('error');
       }
-    }
+    };
 
-    self.player = null;
-    var el = document.getElementById(divid + '_swf');
-    swfobject.embedSWF(swfurl, el, 1, 1, 9.0, '', {
-      'xplayerinterface': XPLAYERINTERFACE
-    }, {
-      allowScriptAccess: "always",
-      wmode: "window"
-    }, {
-      id: "J_xiamiPlayerSwf_" + swfid
-    }, function(e) {
-      self.player = e.ref;
-    });
+    self.player = new Swf(swfConfig);
 
   },
   load: function(url) {
     var self = this;
     self.set('src', url);
-    self.player.jsSrc(url);
+    self.player.callSWF('jsSrc', [url]);
   },
   play: function() {
     var self = this;
-    S.log(self.status.isPlaying, '', "是否正在播放")
+    S.log(self.status.isPlaying, '', '是否正在播放');
     if (!self.status.isPlaying) {
       self.status.isPlaying = true;
       self.status.isPaused = false;
-      self.player.jsPlay()
+      self.player.callSWF('jsPlay');
     }
   },
   pause: function() {
@@ -119,7 +106,7 @@ var FlashPlayer = Base.extend({
       self.status.isPlaying = false;
       self.status.isPaused = true;
       //self.status.pausePosition = self.audio.currentTime;
-      self.player.jsPause()
+      self.player.callSWF('jsPause');
     }
   },
   stop: function() {
@@ -127,20 +114,20 @@ var FlashPlayer = Base.extend({
     self.status.isPlaying = false;
     self.status.isPaused = false;
     self.status.pausePosition = 0;
-    self.player.jsStop()
+    self.player.callSWF('jsStop');
   },
   setPosition: function(val) {
     var self = this;
     self.status.pausePosition = val;
-    self.player.jsPosition(Number(val));
+    self.player.callSWF('jsPosition', [Number(val)]);
     if (!self.status.isPlaying) {
       self.play();
-    };
+    }
   },
   setVolume: function(val) {
     var self = this;
     self.status.volume = val;
-    self.player.setVolume(Number(val));
+    self.player.callSWF('setVolume', [Number(val)]);
   }
 }, {
   ATTR:
@@ -161,7 +148,7 @@ var FlashPlayer = Base.extend({
       },
       validator: function(v) {
         if (v <= 1 && v >= 0 && S.isNumber(v)) {
-          return true
+          return true;
         }
         return false;
       }

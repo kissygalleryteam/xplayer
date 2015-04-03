@@ -6,7 +6,7 @@
  **/
 'use strict';
 var Base = require('base');
-var Swf = require('swf');
+var Swf = require('kg/swf/0.0.1/');
 var Status = require('./status');
 
 function randomString(length) {
