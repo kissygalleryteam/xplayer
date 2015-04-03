@@ -1,1 +1,0 @@
-KISSY.config("requires",{"kg/xplayer/3.0.0/index":["./lib/audio","./lib/audioSwf"],"kg/xplayer/3.0.0/lib/audio":["base","./status"],"kg/xplayer/3.0.0/lib/audioSwf":["base","./swfobject","./status"],"kg/xplayer/3.0.0/lib/main":["node","base"]});
