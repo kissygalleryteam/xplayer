@@ -1,0 +1,1 @@
+KISSY.add("kg/xplayer/3.0.0/lib/status",[],function(e,a,i,t){t.exports={duration:0,currentTime:0,loadedTime:0,volume:.5,isPaused:!1,isPlaying:!1,pausePosition:0,readyState:0}});

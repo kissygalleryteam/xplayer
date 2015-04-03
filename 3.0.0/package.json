@@ -1,0 +1,26 @@
+{
+  "name": "xplayer",
+  "version": "3.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "gulp lint"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-copy": "0.0.2",
+    "gulp-filter": "^1.0.2",
+    "gulp-jshint": "~1.10.0",
+    "gulp-kclean": "1.0.3",
+    "gulp-kmc": "~1.0.28-beta",
+    "gulp-less": "^1.3.5",
+    "gulp-mini-css": "^0.0.1",
+    "gulp-minify": "0.0.5",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "~0.5.3",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.0",
+    "gulp-xtemplate": "~2.1.0",
+    "jshint-stylish": "~1.0.1",
+    "xtemplate": "~4.2.0"
+  }
+}
