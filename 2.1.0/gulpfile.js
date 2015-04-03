@@ -173,4 +173,4 @@ gulp.task('doc', ['clean'], function() {
 })
 
 
-gulp.task('default', ['kmc', 'swf', 'doc']);
+gulp.task('default', ['lint', 'kmc', 'swf', 'doc']);
