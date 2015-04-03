@@ -2,21 +2,21 @@ var gulp = require('gulp');
 var kmc = require('gulp-kmc');
 var copy = require('gulp-copy');
 var kclean = require('gulp-kclean');
-var rename = require("gulp-rename");
+var rename = require('gulp-rename');
 var filter = require('gulp-filter');
 var replace = require('gulp-replace');
 var minify = require('gulp-minify');
 var XTemplate = require('xtemplate');
 var gulpXTemplate = require('gulp-xtemplate');
 var path = require('path');
-var src = ".",
-  dest = "./build";
+var src = '.';
+var dest = './build';
 
 var root = process.cwd();
 var bower = require('./bower.json');
 var version = bower.version;
 //包配置
-var pkg = "kg/" + path.basename(root) + "/" + version;
+var pkg = 'kg/' + path.basename(root) + '/' + version;
 var comboSuffix = '-combo';
 
 kmc.config({
@@ -37,8 +37,8 @@ kmc.config({
 function renderKmc(fileName) {
   var comboFiles = fileName.map(function(name) {
     return {
-      src: pkg + "/" + name + ".js",
-      dest: name + comboSuffix + ".js"
+      src: pkg + '/' + name + '.js',
+      dest: name + comboSuffix + '.js'
     };
   });
   var cleanFiles = fileName.map(function(name) {
@@ -90,7 +90,7 @@ function renderKmc(fileName) {
 }
 
 
-gulp.task('kmc', function() {
+gulp.task('kmc', ['clean'], function() {
   renderKmc(['index']);
 });
 
@@ -108,7 +108,7 @@ gulp.task('xtpl', function() {
     .pipe(gulp.dest(src));
 });
 
-gulp.task('swf', function() {
+gulp.task('swf', ['clean'], function() {
   return gulp
     .src('./flash/*.swf')
     .pipe(copy(dest, {
@@ -137,5 +137,40 @@ gulp.task('clean', function() {
 });
 
 
+var jsdoc = require('gulp-jsdoc');
 
-gulp.task('default', ['kmc', 'swf']);
+gulp.task('doc', ['clean'], function() {
+  return gulp
+    .src(['index.js', 'plugin/status.js', 'README.md'])
+    .pipe(jsdoc.parser({
+      plugins: ['plugins/markdown']
+    }))
+    .pipe(jsdoc.generator('./doc', {
+      'path': './templates/jaguar',
+      'linenums': true,
+      'cleverLinks': true,
+      'monospaceLinks': true,
+      'default': {
+        'outputSourceFiles': true
+      },
+      'applicationName': 'Xplayer.js',
+      'disqus': 'xplayerjs',
+      'googleAnalytics': 'UA-49864231-1',
+      'openGraph': {
+        'title': 'Xplayer.js',
+        'type': 'api',
+        'image': '',
+        'site_name': 'Xplayer.js',
+        'url': 'https://github.com/noyobo/xplayer'
+      },
+      'meta': {
+        'title': 'Xplayer API 文档',
+        'description': 'MP3播放插件',
+        'keyword': 'audio,javascript'
+      }
+    }))
+
+})
+
+
+gulp.task('default', ['kmc', 'swf', 'doc']);
