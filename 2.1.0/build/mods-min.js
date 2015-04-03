@@ -1,2 +1,2 @@
-/*!build time : 2015-01-05 4:45:25 PM*/
-KISSY.config("modules",{"kg/xplayer/2.0.1/mini":{requires:["base"]}});
+/*!build time : 2015-01-29 5:20:46 PM*/
+KISSY.config("modules",{"kg/xplayer/2.0.5/mini":{requires:["base"]}});

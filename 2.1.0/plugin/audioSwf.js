@@ -20,7 +20,8 @@ KISSY.add(function(S, Base, Swf, Status) {
     var win = window;
     var swfurl = "../flash/xplayer.swf?v=" + S.now();
     if (window.location.href.indexOf('github.xiami.com') === -1) {
-        swfurl = 'http://g.tbcdn.cn/de/music-swf/xplayer.swf';
+        swfurl = '//g.alicdn.com/kg/xplayer/@VERSION/xplayer.swf';
+        // swfurl = 'http://gitlabswf.xiami.com/kg/xplayer/build/xplayer.swf';
     };
     var FlashPlayer = Base.extend({
         initializer: function() {
@@ -55,6 +56,9 @@ KISSY.add(function(S, Base, Swf, Status) {
 
             self.status = Status;
             self.interface = win[XPLAYERINTERFACE] = {
+                open: function () {
+                    self.fire('open')
+                },
                 timeupdate: function(data) {
                     self.status.currentTime = data.currentTime;
                     self.status.duration = data.duration;
@@ -103,7 +107,7 @@ KISSY.add(function(S, Base, Swf, Status) {
         stop: function() {
             var self = this;
             self.status.isPlaying = false;
-            self.status.isPaused = true;
+            self.status.isPaused = false;
             self.status.pausePosition = 0;
             self.player.callSWF('jsStop')
         },

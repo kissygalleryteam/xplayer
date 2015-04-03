@@ -1,8 +1,6 @@
 /**
  * @description MP3 播放核心插件
  * @author 宝码<nongyoubao@alibaba-inc.com>
- * @version 1.0
- * @copyright www.noyobo.com
  */
 KISSY.add(function(S, PlayerAudio, PlayerSwf) {
     'use strict';
@@ -57,18 +55,19 @@ KISSY.add(function(S, PlayerAudio, PlayerSwf) {
              * @type {Audio|Swf}
              */
             self.track = null;
-            if (self.config.forceFlash) {
-                self.player = new PlayerSwf();
-                return self;
-            };
-            if (self.config.forceAudio) {
+            self.player = null
+            if (self.config.forceAudio && !self.config.forceFlash) {
                 self.player = new PlayerAudio();
-                return self;
             };
-            var isSupport = self.supportAudio();
-            self.player = isSupport ? new PlayerAudio() : new PlayerSwf();
+            if (self.config.forceFlash && !self.config.forceAudio) {
+                self.player = new PlayerSwf();
+            };
+            if (self.player === null) {
+                var isSupport = self.supportAudio();
+                self.player = isSupport ? new PlayerAudio() : new PlayerSwf();
+            };
+            self.status = self.player.status; // 引用
             //self.player = new PlayerSwf();
-
             /**
              * Xplayer实例属性,正在播放的歌曲 TrackVo 对象
              * @type {Object}
@@ -203,20 +202,30 @@ KISSY.add(function(S, PlayerAudio, PlayerSwf) {
                 var self = this;
                 //audio/mpeg
                 //application/octet-stream
-                var a = document.createElement('audio');
-                return !!(a.canPlayType && a.canPlayType('audio/mpeg').replace(/no/, ''));
+                try {
+                    var a = document.createElement('audio');
+                    return !!(a.canPlayType && 
+                        a.canPlayType('audio/mpeg').replace(/no/, ''));
+                } catch (e) {
+                    S.log(e);
+                }
+                return false;
             }
             /**
              * 正在播放中, 触发该事件
              * @event Xplayer.timeupdate
-             * @param {Object} [data={currentTime:0, duration:1}] 返回内容
+             * @param {Object} [data={currentTime:0, duration:1}] 单位毫秒
              * @return {Object} 返回状态
              */
             /**
              * 正在加载中, 触发该事件
              * @event Xplayer.progress
-             * @param {Object} [data={progress:0, duration:1}] 返回内容
+             * @param {Object} [data={progress:0, duration:1}] 单位毫秒
              * @return {Object} 返回状态
+             */
+            /**
+             * 播放开始(加载文件), 触发该事件
+             * @event Xplayer.open
              */
             /**
              * 播放结束, 触发该事件

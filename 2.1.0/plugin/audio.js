@@ -19,11 +19,15 @@ KISSY.add(function(S, Base, Status) {
             _addEvent: function() {
                 var self = this;
 
-
+                // 正在播放
+                self.audio.addEventListener("loadstart", function(event) {
+                    S.log('Xplayer open')
+                    self.fire('open');
+                });
                 // 正在播放
                 self.audio.addEventListener("timeupdate", function(event) {
-                    self.status.currentTime = this.currentTime;
-                    self.status.duration = this.duration;
+                    self.status.currentTime = this.currentTime * 1000;
+                    self.status.duration = this.duration * 1000;
                     self.fire(event.type, self.status);
                 });
                 // 播放完成
