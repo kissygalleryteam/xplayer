@@ -1,33 +1,33 @@
 {
-    "tags": {
-        "allowUnknownTags": true
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true,
+    "default": {
+      "outputSourceFiles": true
     },
-    "plugins": ["plugins/markdown"],
-    "templates": {
-        "cleverLinks": true,
-        "monospaceLinks": true,
-        "default": {
-            "outputSourceFiles": true
-        },
-        "applicationName": "Xplayer.js",
-        "disqus": "xplayerjs",
-        "googleAnalytics": "UA-49864231-1",
-        "openGraph": {
-            "title": "Xplayer.js",
-            "type": "api",
-            "image": "",
-            "site_name": "Xplayer.js",
-            "url": "https://github.com/noyobo/xplayer"
-        },
-        "meta": {
-            "title": "Xplayer API 文档",
-            "description": "MP3播放插件",
-            "keyword": "audio,javascript"
-        }
+    "applicationName": "Xplayer.js",
+    "disqus": "xplayerjs",
+    "googleAnalytics": "UA-49864231-1",
+    "openGraph": {
+      "title": "Xplayer.js",
+      "type": "api",
+      "image": "",
+      "site_name": "Xplayer.js",
+      "url": "https://github.com/noyobo/xplayer"
     },
-    "markdown": {
-        "parser": "gfm",
-        "hardwrap": true,
-        "tags": ["examples"]
+    "meta": {
+      "title": "Xplayer API 文档",
+      "description": "MP3播放插件",
+      "keyword": "audio,javascript"
     }
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true,
+    "tags": ["examples"]
+  }
 }
