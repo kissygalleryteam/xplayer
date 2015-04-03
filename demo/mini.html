@@ -124,6 +124,7 @@ XiamiPlay.load({
     </div>
     <script>
     (function(S) {
+<<<<<<< HEAD
         var debug = !!~location.search.indexOf('ks-debug');
         S.config({
             packages:[
@@ -141,7 +142,7 @@ XiamiPlay.load({
                 debug: debug,
                 packages:[
                     {
-                        name:"kg/xplayer/2.0.1",
+                        name:"kg/xplayer/2.1.0",
                         path:srcPath,
                         charset:"utf-8",
                         ignorePackageNameInUri:true
@@ -150,7 +151,38 @@ XiamiPlay.load({
             });
         }
 
-        S.use('kg/xplayer/2.0.1/mini, node', function(S, Xplayer, Node) {
+        S.use('kg/xplayer/2.1.0/mini, node', function(S, Xplayer, Node) {
+=======
+        var S = KISSY;
+        if (location.href.indexOf('ks-debug') !== -1) {
+            var debugPath = "http://localhost:5555/";
+            S.config({
+                packages:[
+                    {
+                        debug:true,
+                        name:"kg/xplayer/3.0.0",
+                        path:debugPath,
+                        charset:"utf-8",
+                        ignorePackageNameInUri: true
+                    }
+                ]
+            });
+        }else{
+            S.config({
+                packages:[
+                    {
+                        name:"kg",
+                        path:'//g.alicdn.com/kg',
+                        charset:"utf-8",
+                        ignorePackageNameInUri: true
+                    }
+                ]
+            });
+
+        }
+
+        S.use('kg/xplayer/3.0.0/mini, node', function(S, Xplayer, Node) {
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
             var $ = Node.all;
             var XiamiPlay = window.XiamiPlay = new Xplayer({
                 "autoplay": true
@@ -210,4 +242,8 @@ XiamiPlay.load({
     </script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd

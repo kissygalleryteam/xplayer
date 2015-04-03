@@ -1,1 +1,0 @@
-KISSY.add("kg/xplayer/2.1.0/plugin/status",[],function(e,a,i,t){t.exports={duration:0,currentTime:0,loadedTime:0,volume:.5,isPaused:!1,isPlaying:!1,pausePosition:0,readyState:0}});

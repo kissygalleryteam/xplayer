@@ -8,7 +8,11 @@
         <script src="//g.tbcdn.cn/kissy/k/1.3.1/seed-min.js"></script>
         <script src="http://assets.spmjs.org/totoro/jasmine/1.3.1/jasmine.js"></script>
         <script src="http://assets.spmjs.org/totoro/jasmine/1.3.1/jasmine-html.js"></script>
+<<<<<<< HEAD
         <script src="http://a.tbcdn.cn/s/kissy/gallery/??velocity/1.1/index-min.js,jasmine-kissy/2.0/index-min.js,jasmine-kissy/2.0/ajax-base-min.js"></script>
+=======
+        <script src="http://a.tbcdn.cn/s/kissy/kg/??velocity/1.1/index-min.js,jasmine-kissy/2.0/index-min.js,jasmine-kissy/2.0/ajax-base-min.js"></script>
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
     </head>
     <body>
         <script>
@@ -22,7 +26,11 @@
                 S.config({
                     packages:[
                         {
+<<<<<<< HEAD
                             name: "gallery/xplayer/1.1",
+=======
+                            name: "kg/xplayer/3.0.0",
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
                             path: srcPath,
                             charset: "utf-8",
                             ignorePackageNameInUri: true
@@ -47,7 +55,11 @@
                 var htmlReporter = new jasmine.HtmlReporter();
                 jasmineEnv.addReporter(htmlReporter);
 
+<<<<<<< HEAD
                 S.use('gallery/jasmine-kissy/2.0/',function(S,HtmlMock){
+=======
+                S.use('kg/jasmine-kissy/2.0/',function(S,HtmlMock){
+>>>>>>> 92f144ae1a6361a13457db4cb65fa963c8d113dd
                     S.htmlMock = new HtmlMock();
                     S.use('test/runner',function(){
                         jasmineEnv.execute();
